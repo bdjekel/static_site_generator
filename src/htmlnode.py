@@ -2,7 +2,7 @@
 
 class HTMLNode():
 
-    def __init__(self, tag="", value=None, children=[], props=None):
+    def __init__(self, tag=None, value=None, children=None, props=None):
         self.tag = tag
         self.value = value
         self.children = children
@@ -16,6 +16,8 @@ class HTMLNode():
     
     def props_to_html(self):
         prop_string = ""
+        if self.props is None:
+            return prop_string
         for key, value in self.props:
             prop_string + f" {key}={value}"
         return prop_string
