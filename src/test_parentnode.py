@@ -6,7 +6,7 @@ from parentnode import ParentNode
 
 class TestParentNode(unittest.TestCase):
     def test_no_children(self):
-        node = ParentNode("p",[])
+        node = ParentNode("p")
         self.assertRaises(ValueError, lambda: node.to_html())
     
     def test_no_tag(self):

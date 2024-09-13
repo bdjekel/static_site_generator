@@ -13,8 +13,8 @@ class TestLeafNode(unittest.TestCase):
         self.assertIsNone(node.children)
 
     def test_no_tag(self):
-        node = LeafNode(value="no tag here.")
-        self.assertEqual(node.tag, "")
+        node = LeafNode(None, value="no tag here.")
+        self.assertEqual(node.tag, None)
         self.assertEqual(node.to_html(), node.value)
         
         
