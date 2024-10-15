@@ -8,7 +8,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
 
     for node in old_nodes:
         new_sub_nodes = []
-        if node.text_type != "text":
+        if node.text_type != 'text':
             new_sub_nodes.extend([node])
         else:
             words = node.text.split()
@@ -26,7 +26,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             if word == delimiter and not delimiter_toggle:
                 if len(text_word_list) > 0:
                     text_string = ' '.join(text_word_list) + ' '
-                    new_sub_nodes.extend([TextNode(text_string, "text")])
+                    new_sub_nodes.extend([TextNode(text_string, 'text')])
                     text_word_list.clear()
                 delimiter_toggle = True
                 spacebar_transfer = True
@@ -59,7 +59,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             elif word.startswith(delimiter) and word.endswith(delimiter) and not delimiter_toggle:
                 if len(text_word_list) > 0:
                     text_string = ' '.join(text_word_list) + ' '
-                    new_sub_nodes.extend([TextNode(text_string, "text")])
+                    new_sub_nodes.extend([TextNode(text_string, 'text')])
                     text_word_list.clear()
                 delimiter_toggle = False
                 spacebar_transfer = True
@@ -70,7 +70,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
                 delimited_string = ' '.join(delimited_word_list) + ' '
                 new_sub_nodes.extend([TextNode(delimited_string, text_type)])
                 delimited_word_list.clear()
-                new_sub_nodes.extend([TextNode(word.strip(delimiter), "text")])
+                new_sub_nodes.extend([TextNode(word.strip(delimiter), 'text')])
                 delimiter_toggle = True
                 spacebar_transfer = True
 
@@ -78,7 +78,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             elif word.startswith(delimiter) and not delimiter_toggle:
                 if len(text_word_list) > 0:
                     text_string = ' '.join(text_word_list) + ' '
-                    new_sub_nodes.extend([TextNode(text_string, "text")])
+                    new_sub_nodes.extend([TextNode(text_string, 'text')])
                     text_word_list.clear()
                 delimiter_toggle = True
                 delimited_word_list.extend([word.strip(delimiter)])
@@ -95,7 +95,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             elif word.endswith(delimiter) and not delimiter_toggle:
                 text_word_list.extend([word.strip(delimiter)])
                 text_string = ' '.join(text_word_list)
-                new_sub_nodes.extend([TextNode(text_string, "text")])
+                new_sub_nodes.extend([TextNode(text_string, 'text')])
                 text_word_list.clear()
                 delimiter_toggle = True
                 spacebar_transfer = True
@@ -118,12 +118,12 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
 
 # if delimited word_list is not ended by the end of the list, throw an error.
         if delimiter_toggle:
-            raise Exception("Invalid Markdown syntax")
+            raise Exception('Invalid Markdown syntax')
         
 # if words does not end with a delimiter, add text node for everything since the last delimiter 
         if len(text_word_list) > 0:
             text_string = ' '.join(text_word_list)
-            new_sub_nodes.extend([TextNode(text_string, "text")])
+            new_sub_nodes.extend([TextNode(text_string, 'text')])
         
         # print(f'New Sub Nodes: {new_sub_nodes}')
 
