@@ -3,6 +3,8 @@ import unittest
 from split_nodes_delimiter import split_nodes_delimiter
 from textnode import TextNode
 
+# TODO Consider moving testing data to separate file. Consider also whether pulling in testing data from other unit tests to a central testing data file is a logical improvement.
+
 # See markdown Scenario Table as comment at end of this test file
 
 # node_1 can test these Scenarios:

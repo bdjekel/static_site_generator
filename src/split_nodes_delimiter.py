@@ -2,8 +2,6 @@ from textnode import TextNode
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
 
-# TODO Likely in a separate function, handle non-standard delimiters such as links, images, tables, etc.
-
     new_nodes = []
 
     for node in old_nodes:
