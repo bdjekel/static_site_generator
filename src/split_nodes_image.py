@@ -9,68 +9,57 @@ node_4 = TextNode('This is text with a link [to boot dev](https://www.boot.dev) 
 
 old_nodes = [
     node_1,
-    # node_2,
-    # node_3,
-    # node_4
+    node_2,
+    node_3,
+    node_4
 ]
 
 def split_nodes_image(old_nodes):
     new_nodes = []
     for node in old_nodes:
-        word_list = []        
-        print(node.text)
         image_list = extract_markdown_images(node.text)
-        print(image_list)
-        node_v0 = node.text
-        for image in image_list:
-            print(f'V0 => {node_v0}')
-            print(image[0])
-            node_v1 = node_v0.replace(image[0], '')
-            print(f'V1 => {node_v1}')
-            node_v2 = node_v1.replace(image[1], '')
-            print(f'V2 => {node_v2}')
-            node_v0 = node_v2    
-        node_list = node_v0.split()
-        indices = [i for i, x in enumerate(node_list) if x == '![]()']
-        print(indices)
-        
-        for i in range(0, len(indices)):
-            print(f'THIS IS I ==> {i}')
-            print(f'LENGTH OF NODE_LIST == {len(node_list)}')
-            if indices[i] == 0:
-                new_nodes.extend([TextNode(image_list[i][0], 'image', image_list[i][1])])
-                print(f'start with image {new_nodes}')
-            elif indices[i] == len(node_list) - 1:
-                word_phrase = ' '.join(node_list[indices[i - 1]:])
-                new_nodes.extend([TextNode(word_phrase, 'text')])
-                new_nodes.extend([TextNode(image_list[i][0], 'image', image_list[i][1])])
-                print(f'end with image {new_nodes}')
+        if len(image_list) == 0:
+            print(f'No images in node at index [{old_nodes.index(node)}]')
+            continue
+        else:
+            node_text = node.text
+
+            for image in image_list:
+                node_text = node_text.replace(image[0], '')
+                node_text = node_text.replace(image[1], '')
+            word_list = node_text.split()
+            indices = [i for i, x in enumerate(word_list) if x == '![]()'] # TODO Review and gain better understanding of this concept.
+            
+            if len(indices) == len(word_list):
+                for i in range(0, len(indices)):
+                    new_nodes.extend([TextNode(image_list[i][0], 'image',image_list[i][1])])
+            
             else:
-            # TODO issue with word_phrase here. node_list indices need to be correct whether there is none or 3 or 10 images in the string.  
-                word_phrase = ' '.join(node_list[0:indices[i]])
-                print(word_phrase)
-                new_nodes.extend([TextNode(word_phrase, 'text')])
-                word_phrase = ''
-                new_nodes.extend([TextNode(image_list[i][0], 'image', image_list[i][1])])
-                print(f'image in middle {new_nodes}')
+                text_phrase = []
+
+                for i in range(0, len(word_list)):
+                    if i in indices and len(text_phrase) == 0:
+                        new_nodes.extend([TextNode(image_list[0][0], 'image',image_list[0][1])])
+                        image_list.pop(0)
+                    elif i in indices and len(text_phrase) > 0:
+                        new_nodes.extend([TextNode(' '.join(text_phrase), 'text')])
+                        text_phrase.clear()
+                        new_nodes.extend([TextNode(image_list[0][0], 'image',image_list[0][1])])
+                        image_list.pop(0)
+                    else:
+                        text_phrase.append(word_list[i])
+
+                if len(text_phrase) > 0:
+                    new_nodes.extend([TextNode(' '.join(text_phrase), "text")])
+
+
+
+
 
             
 
-
-            # new_nodes.extend(TextNode(image[0], 'image', image[1]))
-
+    print(new_nodes)
+    return new_nodes
 
 
 split_nodes_image(old_nodes)
-
-
-
-# new_nodes = split_nodes_image([node])
-# [
-#     TextNode('This is text with a link ', 'text'),
-#     TextNode('to boot dev', 'link', 'https://www.boot.dev'),
-#     TextNode(' and ', 'text'),
-#     TextNode(
-#         'to youtube', 'link', 'https://www.youtube.com/@bootdotdev'
-#     ),
-# ]
