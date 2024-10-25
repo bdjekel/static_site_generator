@@ -34,17 +34,25 @@ def split_nodes_image(old_nodes):
         indices = [i for i, x in enumerate(node_list) if x == '![]()']
         print(indices)
         
-        for i in range(0, len(indices) - 1):
+        for i in range(0, len(indices)):
+            print(f'THIS IS I ==> {i}')
+            print(f'LENGTH OF NODE_LIST == {len(node_list)}')
             if indices[i] == 0:
                 new_nodes.extend([TextNode(image_list[i][0], 'image', image_list[i][1])])
-            elif indices[i] == len(image_list) - 1:
+                print(f'start with image {new_nodes}')
+            elif indices[i] == len(node_list) - 1:
+                word_phrase = ' '.join(node_list[indices[i - 1]:])
                 new_nodes.extend([TextNode(word_phrase, 'text')])
-                new_nodes.extend([TextNode(image_list[indices[i]][0], 'image', image_list[indices[i]][1])])
+                new_nodes.extend([TextNode(image_list[i][0], 'image', image_list[i][1])])
+                print(f'end with image {new_nodes}')
             else:
-                word_phrase = node_list[indices[i - 1]:indices[i]]
+            # TODO issue with word_phrase here. node_list indices need to be correct whether there is none or 3 or 10 images in the string.  
+                word_phrase = ' '.join(node_list[0:indices[i]])
+                print(word_phrase)
                 new_nodes.extend([TextNode(word_phrase, 'text')])
-                word_phrase.clear()
-                new_nodes.extend([TextNode(image_list[indices[i]][0], 'image', image_list[indices[i]][1])])
+                word_phrase = ''
+                new_nodes.extend([TextNode(image_list[i][0], 'image', image_list[i][1])])
+                print(f'image in middle {new_nodes}')
 
             
 
