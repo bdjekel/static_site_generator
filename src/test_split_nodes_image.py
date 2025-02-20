@@ -1,3 +1,5 @@
+# TODO: uncomment below code and complete testing for split nodes image.
+# 
 # import unittest
 # from textnode import TextNode
 # from split_nodes_image import split_nodes_image
