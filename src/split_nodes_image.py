@@ -2,18 +2,6 @@ from textnode import TextNode
 from extract_markdown_images import extract_markdown_images
 
 
-node_1 = TextNode('This is text with a link ![to boot dev](https://www.boot.dev) and ![to youtube](https://www.youtube.com/@bootdotdev)', 'text')
-node_2 = TextNode('This is text with a link ![to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)', 'text')
-node_3 = TextNode('This is text with a link [to boot dev](https://www.boot.dev) and ![to youtube](https://www.youtube.com/@bootdotdev)', 'text')
-node_4 = TextNode('This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)', 'text')
-
-old_nodes = [
-    node_1,
-    node_2,
-    node_3,
-    node_4
-]
-
 def split_nodes_image(old_nodes):
     new_nodes = []
     for node in old_nodes:
