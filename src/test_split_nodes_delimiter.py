@@ -2,6 +2,7 @@ import unittest
 
 from split_nodes_delimiter import split_nodes_delimiter
 from textnode import TextNode
+from textnode import TextType
 
 # TODO Consider moving testing data to separate file. Consider also whether pulling in testing data from other unit tests to a central testing data file is a logical improvement.
 
@@ -11,25 +12,25 @@ from textnode import TextNode
 #     > (1) no delimiter, toggle off
 #     > (3) delimiter at start and end, toggle off
 
-node_1_italic = TextNode("Spaghetti is not *Italic* cuisine.","text")
-node_1_bold = TextNode("Fortune favors the **bold,** or so they say","text")
-node_1_strikethrough = TextNode("Cheddar's Cat ~~Scratch~~ Kitchen Sink","text")
+node_1_italic = TextNode("Spaghetti is not *Italic* cuisine.",TextType.TEXT)
+node_1_bold = TextNode("Fortune favors the **bold,** or so they say",TextType.TEXT)
+node_1_strikethrough = TextNode("Cheddar's Cat ~~Scratch~~ Kitchen Sink",TextType.TEXT)
 
 # node_1 expected output:
 expected_nodes_1_italic = [
-    TextNode("Spaghetti is not ", "text"),
-    TextNode("Italic", "italic"), 
-    TextNode(" cuisine.", "text")
+    TextNode("Spaghetti is not ", TextType.TEXT),
+    TextNode("Italic", TextType.ITALIC), 
+    TextNode(" cuisine.", TextType.TEXT)
     ]
 expected_nodes_1_bold = [
-    TextNode("Fortune favors the ", "text"),
-    TextNode("bold,", "bold"), 
-    TextNode(" or so they say", "text")
+    TextNode("Fortune favors the ", TextType.TEXT),
+    TextNode("bold,", TextType.BOLD), 
+    TextNode(" or so they say", TextType.TEXT)
     ]
 expected_nodes_1_strikethrough = [
-    TextNode("Cheddar's Cat ", "text"),
-    TextNode("Scratch", "strikethrough"), 
-    TextNode(" Kitchen Sink", "text")
+    TextNode("Cheddar's Cat ", TextType.TEXT),
+    TextNode("Scratch", TextType.STRIKETHROUGH), 
+    TextNode(" Kitchen Sink", TextType.TEXT)
     ]
 
 
@@ -38,25 +39,25 @@ expected_nodes_1_strikethrough = [
 #     > (8) end delimiter, toggle on
 #     > (2) no delimiter, toggle on
 
-node_2_italic = TextNode("Spaghetti *is not Italic* cuisine.","text")
-node_2_bold = TextNode("Fortune **favors the bold,** or so they say","text")
-node_2_strikethrough = TextNode("Cheddar's ~~Cat Scratch Kitchen~~ Sink","text")
+node_2_italic = TextNode("Spaghetti *is not Italic* cuisine.",TextType.TEXT)
+node_2_bold = TextNode("Fortune **favors the bold,** or so they say",TextType.TEXT)
+node_2_strikethrough = TextNode("Cheddar's ~~Cat Scratch Kitchen~~ Sink",TextType.TEXT)
 
 # node_2 expected output:
 expected_nodes_2_italic = [
-    TextNode("Spaghetti ", "text"),
-    TextNode("is not Italic", "italic"), 
-    TextNode(" cuisine.", "text")
+    TextNode("Spaghetti ", TextType.TEXT),
+    TextNode("is not Italic", TextType.ITALIC), 
+    TextNode(" cuisine.", TextType.TEXT)
     ]
 expected_nodes_2_bold = [
-    TextNode("Fortune ", "text"),
-    TextNode("favors the bold,", "bold"), 
-    TextNode(" or so they say", "text")
+    TextNode("Fortune ", TextType.TEXT),
+    TextNode("favors the bold,", TextType.BOLD), 
+    TextNode(" or so they say", TextType.TEXT)
     ]
 expected_nodes_2_strikethrough = [
-    TextNode("Cheddar's ", "text"),
-    TextNode("Cat Scratch Kitchen", "strikethrough"), 
-    TextNode(" Sink", "text")
+    TextNode("Cheddar's ", TextType.TEXT),
+    TextNode("Cat Scratch Kitchen", TextType.STRIKETHROUGH), 
+    TextNode(" Sink", TextType.TEXT)
     ]
 
 
@@ -66,25 +67,25 @@ expected_nodes_2_strikethrough = [
 #     > (1) no delimiter, toggle off
 #     > (2) no delimiter, toggle on
 
-node_3_italic = TextNode("Spaghetti is* not Italic *cuisine.","text")
-node_3_bold = TextNode("Fortune** favors the bold, **or so they say","text")
-node_3_strikethrough = TextNode("Cheddar's~~ Cat Scratch Kitchen ~~Sink","text")
+node_3_italic = TextNode("Spaghetti is* not Italic *cuisine.",TextType.TEXT)
+node_3_bold = TextNode("Fortune** favors the bold, **or so they say",TextType.TEXT)
+node_3_strikethrough = TextNode("Cheddar's~~ Cat Scratch Kitchen ~~Sink",TextType.TEXT)
 
 # node_3 expected output:
 expected_nodes_3_italic = [
-    TextNode("Spaghetti is", "text"),
-    TextNode(" not Italic ", "italic"), 
-    TextNode("cuisine.", "text")
+    TextNode("Spaghetti is", TextType.TEXT),
+    TextNode(" not Italic ", TextType.ITALIC), 
+    TextNode("cuisine.", TextType.TEXT)
     ]
 expected_nodes_3_bold = [
-    TextNode("Fortune", "text"),
-    TextNode(" favors the bold, ", "bold"), 
-    TextNode("or so they say", "text")
+    TextNode("Fortune", TextType.TEXT),
+    TextNode(" favors the bold, ", TextType.BOLD), 
+    TextNode("or so they say", TextType.TEXT)
     ]
 expected_nodes_3_strikethrough = [
-    TextNode("Cheddar's", "text"),
-    TextNode(" Cat Scratch Kitchen ", "strikethrough"), 
-    TextNode("Sink", "text")
+    TextNode("Cheddar's", TextType.TEXT),
+    TextNode(" Cat Scratch Kitchen ", TextType.STRIKETHROUGH), 
+    TextNode("Sink", TextType.TEXT)
     ]
 
 
@@ -94,50 +95,50 @@ expected_nodes_3_strikethrough = [
 #     > (8) end delimiter, toggle on
 #     > (2) no delimiter, toggle on
 
-node_4_italic = TextNode("*Spaghetti is not *Italic* cuisine.*","text")
-node_4_bold = TextNode("**Fortune favors the **bold,** or so they say**","text")
-node_4_strikethrough = TextNode("~~Cheddar's Cat ~~Scratch~~ Kitchen Sink~~","text")
+node_4_italic = TextNode("*Spaghetti is not *Italic* cuisine.*",TextType.TEXT)
+node_4_bold = TextNode("**Fortune favors the **bold,** or so they say**",TextType.TEXT)
+node_4_strikethrough = TextNode("~~Cheddar's Cat ~~Scratch~~ Kitchen Sink~~",TextType.TEXT)
 
 # node_4 expected output:
 expected_nodes_4_italic = [
-    TextNode("Spaghetti is not ", "italic"),
-    TextNode("Italic", "text"), 
-    TextNode(" cuisine.", "italic")
+    TextNode("Spaghetti is not ", TextType.ITALIC),
+    TextNode("Italic", TextType.TEXT), 
+    TextNode(" cuisine.", TextType.ITALIC)
     ]
 expected_nodes_4_bold = [
-    TextNode("Fortune favors the ", "bold"),
-    TextNode("bold,", "text"), 
-    TextNode(" or so they say", "bold")
+    TextNode("Fortune favors the ", TextType.BOLD),
+    TextNode("bold,", TextType.TEXT), 
+    TextNode(" or so they say", TextType.BOLD)
     ]
 expected_nodes_4_strikethrough = [
-    TextNode("Cheddar's Cat ", "strikethrough"),
-    TextNode("Scratch", "text"), 
-    TextNode(" Kitchen Sink", "strikethrough")
+    TextNode("Cheddar's Cat ", TextType.STRIKETHROUGH),
+    TextNode("Scratch", TextType.TEXT), 
+    TextNode(" Kitchen Sink", TextType.STRIKETHROUGH)
     ]   
 
 # node_5 can test these Scenarios:
 #     > (9) isolated delimiter, toggle off
 #     > (10) isolated delimiter, toggle on
 
-node_5_italic = TextNode('Texas: The Lone * Star * State', "text")
-node_5_bold = TextNode('The average distance between ** two stars ** is 5 light years', "text")
-node_5_strikethrough = TextNode('Three ~~ strikes ~~ and you\'reeeeee outta here', "text")
+node_5_italic = TextNode('Texas: The Lone * Star * State', TextType.TEXT)
+node_5_bold = TextNode('The average distance between ** two stars ** is 5 light years', TextType.TEXT)
+node_5_strikethrough = TextNode('Three ~~ strikes ~~ and you\'reeeeee outta here', TextType.TEXT)
 
 # node_5 expected output:
 expected_nodes_5_italic = [
-    TextNode("Texas: The Lone ", "text"),
-    TextNode(" Star ", "italic"), 
-    TextNode(" State", "text")
+    TextNode("Texas: The Lone ", TextType.TEXT),
+    TextNode(" Star ", TextType.ITALIC), 
+    TextNode(" State", TextType.TEXT)
     ]
 expected_nodes_5_bold = [
-    TextNode("The average distance between ", "text"),
-    TextNode(" two stars ", "bold"), 
-    TextNode(" is 5 light years", "text")
+    TextNode("The average distance between ", TextType.TEXT),
+    TextNode(" two stars ", TextType.BOLD), 
+    TextNode(" is 5 light years", TextType.TEXT)
     ]
 expected_nodes_5_strikethrough = [
-    TextNode("Three ", "text"),
-    TextNode(" strikes ", "strikethrough"), 
-    TextNode(" and you'reeeeee outta here", "text")
+    TextNode("Three ", TextType.TEXT),
+    TextNode(" strikes ", TextType.STRIKETHROUGH), 
+    TextNode(" and you'reeeeee outta here", TextType.TEXT)
     ]  
 
 # node_6 can test these Scenarios:
@@ -145,50 +146,50 @@ expected_nodes_5_strikethrough = [
 #     > (8) end delimiter, toggle on 
 
 
-node_6_italic = TextNode('Texas: The Lone * Star* State', "text")
-node_6_bold = TextNode('The average distance between ** two stars** is 5 light years', "text")
-node_6_strikethrough = TextNode('Three ~~ strikes~~ and you\'reeeeee outta here', "text")
+node_6_italic = TextNode('Texas: The Lone * Star* State', TextType.TEXT)
+node_6_bold = TextNode('The average distance between ** two stars** is 5 light years', TextType.TEXT)
+node_6_strikethrough = TextNode('Three ~~ strikes~~ and you\'reeeeee outta here', TextType.TEXT)
 
 # node_6 expected output:
 expected_nodes_6_italic = [
-    TextNode("Texas: The Lone ", "text"),
-    TextNode(" Star", "italic"), 
-    TextNode(" State", "text")
+    TextNode("Texas: The Lone ", TextType.TEXT),
+    TextNode(" Star", TextType.ITALIC), 
+    TextNode(" State", TextType.TEXT)
     ]
 expected_nodes_6_bold = [
-    TextNode("The average distance between ", "text"),
-    TextNode(" two stars", "bold"), 
-    TextNode(" is 5 light years", "text")
+    TextNode("The average distance between ", TextType.TEXT),
+    TextNode(" two stars", TextType.BOLD), 
+    TextNode(" is 5 light years", TextType.TEXT)
     ]
 expected_nodes_6_strikethrough = [
-    TextNode("Three ", "text"),
-    TextNode(" strikes", "strikethrough"), 
-    TextNode(" and you'reeeeee outta here", "text")
+    TextNode("Three ", TextType.TEXT),
+    TextNode(" strikes", TextType.STRIKETHROUGH), 
+    TextNode(" and you'reeeeee outta here", TextType.TEXT)
     ]  
 
 # node_7 can test these Scenarios:
 #     > (8) start delimiter, toggle off
 #     > (10) isolated delimiter, toggle on
 
-node_7_italic = TextNode('Texas: The Lone *Star * State', "text")
-node_7_bold = TextNode('The average distance between **two stars ** is 5 light years', "text")
-node_7_strikethrough = TextNode('Three ~~strikes ~~ and you\'reeeeee outta here', "text")
+node_7_italic = TextNode('Texas: The Lone *Star * State', TextType.TEXT)
+node_7_bold = TextNode('The average distance between **two stars ** is 5 light years', TextType.TEXT)
+node_7_strikethrough = TextNode('Three ~~strikes ~~ and you\'reeeeee outta here', TextType.TEXT)
 
 # node_7 expected output:
 expected_nodes_7_italic = [
-    TextNode("Texas: The Lone ", "text"),
-    TextNode("Star ", "italic"), 
-    TextNode(" State", "text")
+    TextNode("Texas: The Lone ", TextType.TEXT),
+    TextNode("Star ", TextType.ITALIC), 
+    TextNode(" State", TextType.TEXT)
     ]
 expected_nodes_7_bold = [
-    TextNode("The average distance between ", "text"),
-    TextNode("two stars ", "bold"), 
-    TextNode(" is 5 light years", "text")
+    TextNode("The average distance between ", TextType.TEXT),
+    TextNode("two stars ", TextType.BOLD), 
+    TextNode(" is 5 light years", TextType.TEXT)
     ]
 expected_nodes_7_strikethrough = [
-    TextNode("Three ", "text"),
-    TextNode("strikes ", "strikethrough"), 
-    TextNode(" and you'reeeeee outta here", "text")
+    TextNode("Three ", TextType.TEXT),
+    TextNode("strikes ", TextType.STRIKETHROUGH), 
+    TextNode(" and you'reeeeee outta here", TextType.TEXT)
     ]  
 
 old_italic_nodes = [node_1_italic, node_2_italic, node_3_italic, node_4_italic, node_5_italic, node_6_italic, node_7_italic]
@@ -207,30 +208,30 @@ expected_nodes_combined = expected_italic_nodes + expected_bold_nodes + expected
 
 class TestSplitNodesDelimiter(unittest.TestCase):
     def test_singluar_nodes_italic(self):
-        resulting_italic_nodes = split_nodes_delimiter([node_1_italic], '*', 'italic')
+        resulting_italic_nodes = split_nodes_delimiter([node_1_italic], '*', TextType.ITALIC)
         self.assertEqual(resulting_italic_nodes, expected_nodes_1_italic)
 
     def test_singluar_nodes_bold(self):
-        resulting_bold_nodes = split_nodes_delimiter([node_1_bold], '**', 'bold')
+        resulting_bold_nodes = split_nodes_delimiter([node_1_bold], '**', TextType.BOLD)
         self.assertEqual(resulting_bold_nodes, expected_nodes_1_bold)
 
     def test_singluar_nodes_strikethrough(self):
-        resulting_strikethrough_nodes = split_nodes_delimiter([node_1_strikethrough], '~~', 'strikethrough')
+        resulting_strikethrough_nodes = split_nodes_delimiter([node_1_strikethrough], '~~', TextType.STRIKETHROUGH)
         self.assertEqual(resulting_strikethrough_nodes, expected_nodes_1_strikethrough)
 
     def test_all_scenarios_with_italic(self):
         self.maxDiff = None
-        resulting_italic_nodes = split_nodes_delimiter(old_italic_nodes, '*', "italic")
+        resulting_italic_nodes = split_nodes_delimiter(old_italic_nodes, '*', TextType.ITALIC)
         self.assertEqual(resulting_italic_nodes, expected_italic_nodes)
 
     def test_all_scenarios_with_bold(self):
         self.maxDiff = None
-        resulting_bold_nodes = split_nodes_delimiter(old_bold_nodes, '**', "bold")
+        resulting_bold_nodes = split_nodes_delimiter(old_bold_nodes, '**', TextType.BOLD)
         self.assertEqual(resulting_bold_nodes, expected_bold_nodes)
 
     def test_all_scenarios_with_strikethrough(self):
         self.maxDiff = None
-        resulting_strikethrough_nodes = split_nodes_delimiter(old_strikethrough_nodes, '~~', "strikethrough")
+        resulting_strikethrough_nodes = split_nodes_delimiter(old_strikethrough_nodes, '~~', TextType.STRIKETHROUGH)
         self.assertEqual(resulting_strikethrough_nodes, expected_strikethrough_nodes)
 
 
