@@ -23,7 +23,7 @@ class TestParentNode(unittest.TestCase):
                 LeafNode(None, "Normal text"),
             ],
         )
-        print(node.to_html())
+        # print(node.to_html())
         self.assertIsNotNone(lambda: node.to_html())      
                 
 

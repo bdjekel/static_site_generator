@@ -11,12 +11,14 @@ expected_result_2 = []
 class TestExtractMarkdownLinks(unittest.TestCase):
     def test_single_link_string_normal(self):
         acutal_result = extract_markdown_links(raw_md_link_string)
-        print(f'ACTUAL   ===> {acutal_result}')
-        print(f'EXPECTED ===> {expected_result_1}')
+        # print(f'ACTUAL   ===> {acutal_result}')
+        # print(f'EXPECTED ===> {expected_result_1}')
         self.assertEqual(acutal_result, expected_result_1)
 
     def test_single_image_string_normal(self):
         acutal_result = extract_markdown_links(raw_md_image_string)
+        # print(f'ACTUAL   ===> {acutal_result}')
+        # print(f'EXPECTED ===> {expected_result_2}')
         self.assertEqual(acutal_result, expected_result_2)
 
 # TODO TESTING INCOMPLETE. WRITE MORE TESTS PRIOR TO FINISHING PROJECT.
