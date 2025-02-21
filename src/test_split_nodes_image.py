@@ -62,16 +62,10 @@ expected_node_8 = [
     TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev')
 ]
 
-expected_nodes = [
-    expected_node_1,
-    expected_node_2,
-    expected_node_3,
-    expected_node_4,
-    expected_node_5,
-    expected_node_6,
-    expected_node_7,
-    expected_node_8,
-]
+expected_nodes = expected_node_1 + expected_node_2 + expected_node_3 + expected_node_4 + expected_node_5 + expected_node_6 + expected_node_7 + expected_node_8
+
+print(f"\n EXPECTED_NODES ==> {expected_nodes} \n")
+
 
 class TestExtractMarkdownImages(unittest.TestCase):
     def test_isolated_split_nodes_image(self):
