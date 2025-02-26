@@ -26,45 +26,43 @@ old_nodes = [
     node_8,
 ]
 
-expected_node_1 = [TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev)')]
+expected_node_1 = [TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev')]
 expected_node_2 = [
     TextNode('to boot dev', TextType.IMAGE, 'https://www.boot.dev'), 
-    TextNode('and', TextType.TEXT)
+    TextNode(' and', TextType.TEXT)
     ]
 expected_node_3 = [
-    TextNode('and', TextType.TEXT), 
-    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev)')
+    TextNode('and ', TextType.TEXT), 
+    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev')
     ]
 expected_node_4 = [
     TextNode('to boot dev', TextType.IMAGE, 'https://www.boot.dev'), 
-    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev)')
+    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev')
     ]
 expected_node_5 = [
     TextNode('to boot dev', TextType.IMAGE, 'https://www.boot.dev'), 
-    TextNode('<== Click this link for boot. Click this link for video ==>', TextType.TEXT), 
-    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev)')
+    TextNode(' <== Click this link for boot. Click this link for video ==> ', TextType.TEXT), 
+    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev')
     ]
 expected_node_6 = [
-    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev)'),
-    TextNode('Click this image', TextType.TEXT), 
+    TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev'),
+    TextNode(' Click this image', TextType.TEXT), 
 
 ]
 expected_node_7 = [
-    TextNode('This is text with two images', TextType.TEXT),
-    TextNode('to boot dev', TextType.IMAGE, 'https://www.boot.dev'), TextNode('and', TextType.TEXT),
+    TextNode('This is text with two images ', TextType.TEXT),
+    TextNode('to boot dev', TextType.IMAGE, 'https://www.boot.dev'), 
+    TextNode(' and ', TextType.TEXT),
     TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev')
 ]
 
 expected_node_8 = [
-    TextNode('This is text with a link', TextType.TEXT),
-    TextNode('to boot dev', TextType.IMAGE, 'https://www.boot.dev'),
-    TextNode('and an image', TextType.TEXT),
+    TextNode('This is text with a link [to boot dev](https://www.boot.dev) and an image ', TextType.TEXT),
     TextNode('to youtube', TextType.IMAGE, 'https://www.youtube.com/@bootdotdev')
 ]
 
 expected_nodes = expected_node_1 + expected_node_2 + expected_node_3 + expected_node_4 + expected_node_5 + expected_node_6 + expected_node_7 + expected_node_8
 
-print(f"\n EXPECTED_NODES ==> {expected_nodes} \n")
 
 
 class TestExtractMarkdownImages(unittest.TestCase):

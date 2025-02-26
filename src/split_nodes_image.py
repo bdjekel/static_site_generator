@@ -9,12 +9,18 @@ def split_nodes_image(old_nodes: list):
     for node in old_nodes:
         sub_nodes = []
         sub_nodes_text = re.split(r"(!\[[^\[\]]*\]\([^\(\)]*\))", node.text)
+        
+        print("\n EXPECTED_SUB_NODES ==> \n")
+        for node in sub_nodes_text:
+            print(node)
+
         sub_nodes_text = [s for s in sub_nodes_text if len(s) > 0 and s != " "]
         for s in sub_nodes_text:
             if "![" in s:
                 image_data = extract_markdown_images(s)
                 sub_nodes.extend([TextNode(image_data[0][0], TextType.IMAGE, image_data[0][1])])
             else:
+                print(f"Aha! a link {s}")
                 sub_nodes.extend([TextNode(s, TextType.TEXT)])
         new_nodes.extend(sub_nodes)
     return new_nodes
