@@ -4,7 +4,6 @@ import unittest
 from textnode import TextNode
 from textnode import TextType
 from split_nodes_image import split_nodes_image
-from extract_markdown_images import extract_markdown_images
 
 node_1 = TextNode('![to youtube](https://www.youtube.com/@bootdotdev)', TextType.TEXT)
 node_2 = TextNode('![to boot dev](https://www.boot.dev) and', TextType.TEXT)
