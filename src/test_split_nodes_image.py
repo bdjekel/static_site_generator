@@ -1,4 +1,5 @@
-# TODO: uncomment below code and complete testing for split nodes image.
+# TODO: tests could be more rigorous. Consider writing more.
+
 
 import unittest
 from textnode import TextNode

@@ -1,3 +1,5 @@
+# TODO: tests could be more rigorous. Consider writing more.
+
 import unittest
 from extract_markdown_links import extract_markdown_links
 
@@ -20,12 +22,6 @@ class TestExtractMarkdownLinks(unittest.TestCase):
         # print(f'ACTUAL   ===> {acutal_result}')
         # print(f'EXPECTED ===> {expected_result_2}')
         self.assertEqual(acutal_result, expected_result_2)
-
-# TODO TESTING INCOMPLETE. WRITE MORE TESTS PRIOR TO FINISHING PROJECT.
-
-
-
-
 
 if __name__ == "__main__":
     unittest.main()

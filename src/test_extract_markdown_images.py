@@ -1,3 +1,6 @@
+# TODO: tests could be more rigorous. Consider writing more.
+
+
 import unittest
 from extract_markdown_images import extract_markdown_images
 
@@ -22,7 +25,7 @@ class TestExtractMarkdownImages(unittest.TestCase):
 
 
 
-# TODO TESTING INCOMPLETE. WRITE MORE TESTS PRIOR TO FINISHING PROJECT.
+
 
 
 

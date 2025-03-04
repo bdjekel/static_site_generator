@@ -1,9 +1,9 @@
-# TODO: uncomment below code and complete testing for split nodes image.
+# TODO: tests could be more rigorous. Consider writing more.
 
 import unittest
 from textnode import TextNode
 from textnode import TextType
-from split_nodes_image import split_nodes_image
+from split_nodes_link import split_nodes_link
 
 node_1 = TextNode('[to youtube](https://www.youtube.com/@bootdotdev)', TextType.TEXT)
 node_2 = TextNode('[to boot dev](https://www.boot.dev) and', TextType.TEXT)
@@ -56,7 +56,7 @@ expected_node_7 = [
 ]
 
 expected_node_8 = [
-    TextNode('This is text with a link', TextType.TEXT), 
+    TextNode('This is text with a link ', TextType.TEXT), 
     TextNode('to boot dev', TextType.LINK, 'https://www.boot.dev'),
     TextNode(' and an image ![to youtube](https://www.youtube.com/@bootdotdev)', TextType.TEXT)
 ]
@@ -65,11 +65,12 @@ expected_nodes = expected_node_1 + expected_node_2 + expected_node_3 + expected_
 
 
 
-class TestExtractMarkdownImages(unittest.TestCase):
-    def test_isolated_split_nodes_image(self):
-        resulting_node = split_nodes_image([node_1])
+class TestExtractMarkdownLinks(unittest.TestCase):
+    def test_isolated_split_nodes_link(self):
+        resulting_node = split_nodes_link([node_1])
         self.assertEqual([resulting_node], [expected_node_1])
-    def test_all_split_nodes_image(self):
-        resulting_nodes = split_nodes_image(old_nodes)
+    def test_all_split_nodes_link(self):
+        self.maxDiff = None
+        resulting_nodes = split_nodes_link(old_nodes)
         self.assertEqual(resulting_nodes, expected_nodes)
 
