@@ -8,16 +8,18 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
     for node in old_nodes:
         new_sub_nodes = []
         if delimiter not in node.text:
-        # if node.text_type != TextType.TEXT:
             new_sub_nodes.extend([node])
             print(f"NEW_SUB_NODES ==>\n\n{new_sub_nodes}\n\n")
         else:
+            if node.text[0] == " ":
+                spacebar_transfer = True
+            else:
+                spacebar_transfer = False
             words = node.text.split()
             # print(words)
             delimiter_toggle = False
             delimited_word_list = []
             text_word_list = []
-            spacebar_transfer = False # Used to preserve spaces adjacent to delimiters.
             for word in words:
             # print(f'>>{word}<<')
         
