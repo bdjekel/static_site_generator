@@ -7,8 +7,10 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
 
     for node in old_nodes:
         new_sub_nodes = []
-        if node.text_type != TextType.TEXT:
+        if delimiter not in node.text:
+        # if node.text_type != TextType.TEXT:
             new_sub_nodes.extend([node])
+            print(f"NEW_SUB_NODES ==>\n\n{new_sub_nodes}\n\n")
         else:
             words = node.text.split()
             # print(words)
@@ -116,13 +118,13 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
             # print(f'delimited_word_list: {delimited_word_list}')
 
 # if delimited word_list is not ended by the end of the list, throw an error.
-        if delimiter_toggle:
-            raise Exception('Invalid Markdown syntax')
+            if delimiter_toggle:
+                raise Exception('Invalid Markdown syntax')
         
 # if words does not end with a delimiter, add text node for everything since the last delimiter 
-        if len(text_word_list) > 0:
-            text_string = ' '.join(text_word_list)
-            new_sub_nodes.extend([TextNode(text_string, TextType.TEXT)])
+            if len(text_word_list) > 0:
+                text_string = ' '.join(text_word_list)
+                new_sub_nodes.extend([TextNode(text_string, TextType.TEXT)])
         
         # print(f'New Sub Nodes: {new_sub_nodes}')
 
