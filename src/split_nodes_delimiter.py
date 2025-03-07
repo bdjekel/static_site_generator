@@ -1,6 +1,8 @@
 from textnode import TextNode
 from textnode import TextType
 
+# TODO: consider refactoring the conditionals below to DRY up the code a bit. There might be some repetition that can be wrapped into helper functions. If not, consider making each condition its own helper function.
+
 def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
     
     new_nodes = []
@@ -9,7 +11,7 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
         new_sub_nodes = []
         if delimiter not in node.text:
             new_sub_nodes.extend([node])
-            print(f"NEW_SUB_NODES ==>\n\n{new_sub_nodes}\n\n")
+            # print(f"NEW_SUB_NODES ==>\n\n{new_sub_nodes}\n\n")
         else:
             if node.text[0] == " ":
                 spacebar_transfer = True
@@ -21,9 +23,9 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
             delimited_word_list = []
             text_word_list = []
             for word in words:
-            # print(f'>>{word}<<')
+                # print(f'>>{word}<<')
         
-# Currently only evaluates delimiters at the start or end of words (the ten (10) scenarios described below). It does **NOT** catch delimiters _within_ words.
+# Currently only evaluates delimiters at the start or end of words (the ten (10) scenarios described below). It does **NOT** catch delimiters _within_ words. (e.g., "Jim puts the _x_ in e_x_tra." Will not return extra with a bolded x.) This includes formatted words ending in punctuation (e.g., "This **bold phrase**, will throw an error.")
 
 # Scenario (9): isolated delimiter, toggle off
                 if word == delimiter and not delimiter_toggle:
