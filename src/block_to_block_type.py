@@ -1,3 +1,4 @@
+from enum import Enum
 import re
 
 class BlockType(Enum):
@@ -17,13 +18,27 @@ def block_to_block_type(markdown_block):
     elif re.search(r"^#{1,6}(?=\s)", markdown_block):
         return BlockType.HEADING
     
-    elif re.search(r"^`{3}", markdown_block) and re.search(r"$`{3}", markdown_block):
+    elif re.search(r"^`{3}", markdown_block) and re.search(r"`{3}$", markdown_block):
         return BlockType.CODE
     
-    elif markdown_block.startswith(">"):
-        block_lines = 
-        return BlockType.HEADING
+    elif all(line.startswith(">") for line in markdown_block.splitlines()):
+        return BlockType.QUOTE
     
-    elif markdown_block.startswith("#"):
-        return BlockType.HEADING
-    
+# TODO: failing test here
+    elif all(line.startswith("- ") for line in markdown_block.split()):
+        return BlockType.UNORDERED_LIST
+
+# TODO: failing test here
+    elif markdown_block.startswith("1. "):
+        list_ordered = True
+        list_items = markdown_block.splitlines()
+        for index, item in enumerate(list_items):
+            item_number = index + 1
+            if not item.startswith(f"{item_number}. "):
+                list_ordered = False
+                break
+        if list_ordered:
+            return BlockType.ORDERED_LIST
+    else:
+        return BlockType.PARAGRAPH
+            
