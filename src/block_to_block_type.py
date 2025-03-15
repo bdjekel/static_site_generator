@@ -28,10 +28,12 @@ def block_to_block_type(markdown_block):
     elif all(line.startswith("- ") for line in markdown_block.split()):
         return BlockType.UNORDERED_LIST
 
-# TODO: failing test here
+# TODO: if for loop starts, but fails...func returns "None". 
     elif markdown_block.startswith("1. "):
+        print("oooooooohhhhhh. shit might be ordered")
         list_ordered = True
         list_items = markdown_block.splitlines()
+        print(f"LIST ITEMS ==> {list_items}")
         for index, item in enumerate(list_items):
             item_number = index + 1
             if not item.startswith(f"{item_number}. "):
