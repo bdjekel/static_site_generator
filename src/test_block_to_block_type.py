@@ -23,7 +23,7 @@ class TestMarkdownToBlocks(unittest.TestCase):
         self.assertEqual(block_to_block_type(u_list), BlockType.UNORDERED_LIST)
 
     def test_ordered_list(self):
-        o_list = "1. snow shovel belongs to Old Man Marley.\n2. turtle doves for the crazy bird lady.\n 3. Home Alone's is one too many.\n4. Ran out of steam trying to be clever."
+        o_list = "1. snow shovel belongs to Old Man Marley.\n2. turtle doves for the crazy bird lady.\n3. Home Alone's is one too many.\n4. Ran out of steam trying to be clever."
         self.assertEqual(block_to_block_type(o_list), BlockType.ORDERED_LIST)
 
     def test_paragraph(self):

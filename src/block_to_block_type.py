@@ -25,22 +25,22 @@ def block_to_block_type(markdown_block):
         return BlockType.QUOTE
     
 # TODO: failing test here
-    elif all(line.startswith("- ") for line in markdown_block.split()):
+    elif all(line.startswith("- ") for line in markdown_block.splitlines()):
         return BlockType.UNORDERED_LIST
 
 # TODO: if for loop starts, but fails...func returns "None". 
     elif markdown_block.startswith("1. "):
-        print("oooooooohhhhhh. shit might be ordered")
-        list_ordered = True
-        list_items = markdown_block.splitlines()
-        print(f"LIST ITEMS ==> {list_items}")
-        for index, item in enumerate(list_items):
-            item_number = index + 1
-            if not item.startswith(f"{item_number}. "):
-                list_ordered = False
+        print(f"oooooooohhhhhh. shit might be ordered\n{markdown_block}")
+        is_ordered = True
+        for i, line in enumerate(markdown_block.splitlines()):
+            if not line.startswith(f"{i + 1}. "):
+                is_ordered = False
+                print(f"is_ordered = {is_ordered}")
                 break
-        if list_ordered:
-            return BlockType.ORDERED_LIST
-    else:
-        return BlockType.PARAGRAPH
+            else:
+                print("CONTINUING")
+        print("we are out of the for loop")
+        if is_ordered: return BlockType.ORDERED_LIST
+
+    return BlockType.PARAGRAPH
             
