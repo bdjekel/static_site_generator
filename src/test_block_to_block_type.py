@@ -19,7 +19,7 @@ class TestMarkdownToBlocks(unittest.TestCase):
         self.assertEqual(block_to_block_type(quote), BlockType.QUOTE)
 
     def test_unordered_list(self):
-        u_list = "- this could be the last\n- or the first\n- bullet point.\n-disorder is chaos\n- but unorder is flexibility."
+        u_list = "- this could be the last\n- or the first\n- bullet point.\n- disorder is chaos\n- but unorder is flexibility."
         self.assertEqual(block_to_block_type(u_list), BlockType.UNORDERED_LIST)
 
     def test_ordered_list(self):

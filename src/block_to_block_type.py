@@ -28,18 +28,14 @@ def block_to_block_type(markdown_block):
     elif all(line.startswith("- ") for line in markdown_block.splitlines()):
         return BlockType.UNORDERED_LIST
 
-# TODO: if for loop starts, but fails...func returns "None". 
     elif markdown_block.startswith("1. "):
-        print(f"oooooooohhhhhh. shit might be ordered\n{markdown_block}")
         is_ordered = True
         for i, line in enumerate(markdown_block.splitlines()):
             if not line.startswith(f"{i + 1}. "):
                 is_ordered = False
-                print(f"is_ordered = {is_ordered}")
                 break
             else:
-                print("CONTINUING")
-        print("we are out of the for loop")
+                continue
         if is_ordered: return BlockType.ORDERED_LIST
 
     return BlockType.PARAGRAPH
