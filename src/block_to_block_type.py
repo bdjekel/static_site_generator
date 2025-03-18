@@ -10,7 +10,7 @@ class BlockType(Enum):
     HEADING5 = "h5"
     HEADING6 = "h6"
     CODE = "code"
-    QUOTE = "quote"
+    QUOTE = "q"
     UNORDERED_LIST = "ul"
     ORDERED_LIST = "ol"
 

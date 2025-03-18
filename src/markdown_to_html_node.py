@@ -22,12 +22,35 @@ def markdown_to_html_node(markdown):
     # The "code" block is a bit of a special case: it should not do any inline markdown parsing of its children. I didn't use my text_to_children function for this block type, I manually made a TextNode and used text_node_to_html_node.
 # Make all the block nodes children under a single parent HTML node (which should just be a div) and return it.
 md1 = """
-This is **bolded** paragraph
-text in a p
-tag here
+# Code block below
 
-This is another paragraph with _italic_ text and `code` here
+```go
+type User struct {
+    name: Jimbo
+    password: craigLeg
+}
+```
 
+## quote below
+
+> "29 Kids go into the water, 22 Kids come out of the water. 
+> The Ice Cream Man, He gets the rest. 
+> April the 9th, Half past four P.M."
+
+### unordered list below
+
+- Quoted Actor: Dana Carvey
+- Quoted Movie: Master of Disguise
+- IMDb Rating: 3.4 / 10
+- Metascore: 12 / 100
+- My Rating: 7 / 10
+
+#### ordered list below
+
+1. watch better movies
+2. like those better movies
+3. stop quoting impressively bad movies
+4. get friends
 """
 
 
