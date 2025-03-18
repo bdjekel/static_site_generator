@@ -2,12 +2,17 @@ from enum import Enum
 import re
 
 class BlockType(Enum):
-    PARAGRAPH = "paragraph"
-    HEADING = "heading"
+    PARAGRAPH = "p"
+    HEADING1 = "h1"
+    HEADING2 = "h2"
+    HEADING3 = "h3"
+    HEADING4 = "h4"
+    HEADING5 = "h5"
+    HEADING6 = "h6"
     CODE = "code"
     QUOTE = "quote"
-    UNORDERED_LIST = "unordered list"
-    ORDERED_LIST = "ordered_list"
+    UNORDERED_LIST = "ul"
+    ORDERED_LIST = "ol"
 
 
 def block_to_block_type(markdown_block):
@@ -16,8 +21,19 @@ def block_to_block_type(markdown_block):
     
     # elected to use re.search and the "^" quantifier to practice regex more broadly. But with Python re, you can start from the beginning using re.match, eliminating the need for "^"
     elif re.search(r"^#{1,6}(?=\s)", markdown_block):
-        return BlockType.HEADING
-    
+        if re.search(r"^#{6}(?=\s)", markdown_block):
+            return BlockType.HEADING6
+        elif re.search(r"^#{5}(?=\s)", markdown_block):
+            return BlockType.HEADING5
+        elif re.search(r"^#{4}(?=\s)", markdown_block):
+            return BlockType.HEADING4
+        elif re.search(r"^#{3}(?=\s)", markdown_block):
+            return BlockType.HEADING3
+        elif re.search(r"^#{2}(?=\s)", markdown_block):
+            return BlockType.HEADING2
+        elif re.search(r"^#{1}(?=\s)", markdown_block):
+            return BlockType.HEADING1
+        
     elif re.search(r"^`{3}", markdown_block) and re.search(r"`{3}$", markdown_block):
         return BlockType.CODE
     

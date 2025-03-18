@@ -2,10 +2,30 @@ import unittest
 from block_to_block_type import BlockType, block_to_block_type
 
 class TestMarkdownToBlocks(unittest.TestCase):
-    def test_heading(self):
+    def test_heading1(self):
         heading = "# This is a heading"
-        self.assertEqual(block_to_block_type(heading), BlockType.HEADING)
+        self.assertEqual(block_to_block_type(heading), BlockType.HEADING1)
     
+    def test_heading2(self):
+        heading = "## This is a heading"
+        self.assertEqual(block_to_block_type(heading), BlockType.HEADING2)
+    
+    def test_heading3(self):
+        heading = "### This is a heading"
+        self.assertEqual(block_to_block_type(heading), BlockType.HEADING3)
+
+    def test_heading4(self):
+        heading = "#### This is a heading"
+        self.assertEqual(block_to_block_type(heading), BlockType.HEADING4)
+
+    def test_heading5(self):
+        heading = "##### This is a heading"
+        self.assertEqual(block_to_block_type(heading), BlockType.HEADING5)
+
+    def test_heading6(self):
+        heading6 = "###### This is a heading"
+        self.assertEqual(block_to_block_type(heading6), BlockType.HEADING6)
+
     def test_code_no_newline(self):
         code = "``` This is code```"
         self.assertEqual(block_to_block_type(code), BlockType.CODE)
