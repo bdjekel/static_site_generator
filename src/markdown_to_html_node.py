@@ -1,25 +1,23 @@
 from block_to_block_type import block_to_block_type, BlockType
-from split_nodes_delimiter import split_nodes_delimiter
-from split_nodes_image import split_nodes_image
-from split_nodes_link import split_nodes_link
-from text_to_children import text_to_children
 from htmlnode import HTMLNode
 from markdown_to_blocks import markdown_to_blocks
+from text_to_children import text_to_children
+
 
 def markdown_to_html_node(markdown):
+    wrapper_div = HTMLNode("div", children=[])
     markdown_blocks = markdown_to_blocks(markdown)
-    print(f"markdown_blocks => {markdown_blocks}")
     for block in markdown_blocks:
-        print(f"block => {block}")   
         block_type = block_to_block_type(block)
-        print(f"block_type => {block_type.value}")   
+# Since "`" is both a block level and inline level delimiter, must be stripped to avoid throwing error
+        if block_type == BlockType.CODE:
+            block = block.strip("`")
         block_html_node = HTMLNode(block_type.value, block)
-        print(f"block_html_node => {block_html_node}")
-        
-
-
-
-    return 0
+        children = text_to_children(block)
+        block_html_node.children = children
+        wrapper_div.children.append(block_html_node)
+    # print(f"\n-----------\n{wrapper_div}\n-----------\n")
+    return wrapper_div
 
 
 # Split the markdown into blocks (you already have a function for this)
@@ -41,24 +39,24 @@ type User struct {
 
 ## quote below
 
-> "29 Kids go into the water, 22 Kids come out of the water. 
-> The Ice Cream Man, He gets the rest. 
+> "29 Kids go into the water, **22 Kids** come out of the water. 
+> The Ice _Cream Man,_ He gets the rest. 
 > April the 9th, Half past four P.M."
 
 ### unordered list below
 
 - Quoted Actor: Dana Carvey
 - Quoted Movie: Master of Disguise
-- IMDb Rating: 3.4 / 10
+- IMDb Rating: `3.4 / 10`
 - Metascore: 12 / 100
 - My Rating: 7 / 10
 
 #### ordered list below
 
 1. watch better movies
-2. like those better movies
-3. stop quoting impressively bad movies
-4. get friends
+2. like those better [movies](https://fake.link.io)
+3. stop quoting ~~thinking about~~ impressively bad movies
+4. get friends ![fake pic](https://fake.picture.io/fakepic.jpg)
 """
 
 
@@ -69,4 +67,9 @@ the **same** even with inline stuff
 ```
 """
 
-markdown_to_html_node(md1)
+md_node_tree = markdown_to_html_node(md1)
+
+#TODO: the below throws an error due to "NotImplementedError." This means your program is not correctly labelling Parent and Child Nodes. Think through your solution thoroughly before fixing the bug.
+md_html = md_node_tree.to_html()
+print(md_html)
+
