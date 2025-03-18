@@ -4,13 +4,13 @@ from leafnode import LeafNode
 
 
 class TextType(Enum):
-    TEXT = "text"
-    BOLD = "bold"
-    ITALIC = "italic"
-    STRIKETHROUGH = "strikethrough"
+    TEXT = "" #TODO: Figure out what the value needs to be to correctly combine inline with the other HTMLNodes
+    BOLD = "b"
+    ITALIC = "i"
+    STRIKETHROUGH = "s"
     CODE = "code"
-    LINK = "link"
-    IMAGE = "image"
+    LINK = "a"
+    IMAGE = "img"
 
 class TextNode():
     
