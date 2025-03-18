@@ -24,7 +24,6 @@ def block_to_block_type(markdown_block):
     elif all(line.startswith(">") for line in markdown_block.splitlines()):
         return BlockType.QUOTE
     
-# TODO: failing test here
     elif all(line.startswith("- ") for line in markdown_block.splitlines()):
         return BlockType.UNORDERED_LIST
 
