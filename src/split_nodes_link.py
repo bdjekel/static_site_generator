@@ -17,6 +17,10 @@ def split_nodes_link(old_nodes: list):
                 if re.match(r"(?<!!)(\[[^\[\]]*\]\([^\(\)]*\))", s):
                     link_data = extract_markdown_links(s)
                     sub_nodes.extend([TextNode(link_data[0][0], TextType.LINK, link_data[0][1])])
+                    print("\n\n--------LINK NODE--------\n\n")
+                    print(f"{sub_nodes}")
+                    print("\n\n--------LINK NODE--------\n\n")
+
                 else:
                     sub_nodes.extend([TextNode(s, TextType.TEXT)])
             new_nodes.extend(sub_nodes)

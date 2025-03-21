@@ -20,6 +20,10 @@ def text_to_children(markdown):
                 value = node.text,
                 props = {"href" : node.url}
             )
+            print("\n\n--------LINK NODE--------\n\n")
+            print(f"{link_node}")
+            print("\n\n--------LINK NODE--------\n\n")
+
             children.append(link_node)
             # print(f"LINK ADDED TO CHILDREN ==> {children}")
         elif node.text_type is TextType.TEXT:
@@ -33,7 +37,7 @@ def text_to_children(markdown):
             )
             children.append(emphasized_node)
             # print(f"EMPHASIZED ADDED TO CHILDREN ==> {children}")
-    # print(f"\n------------------\ntext_to_children RETURNS:\n{children}\n------------------\n")
+    print(f"\n------------------\ntext_to_children RETURNS:\n{children}\n------------------\n")
     return children
 
 #TODO: Move below to test file. Write more tests.

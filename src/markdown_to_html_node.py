@@ -13,6 +13,7 @@ def markdown_to_html_node(markdown):
         if block_type == BlockType.CODE:
             block = block.strip("`")
         block_html_node = ParentNode(block_type.value, block)
+#TODO: STOPPED HERE DOING TRACEBACK FOR ERROR WITH LINK TYPE HTMLNODES. TextNode is being converted correctly to a LeafNode in text_to_children. Where does 
         children = text_to_children(block)
         block_html_node.children = children
         wrapper_div.children.append(block_html_node)

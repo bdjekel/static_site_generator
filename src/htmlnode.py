@@ -18,7 +18,13 @@ class HTMLNode():
         prop_string = ""
         if self.props is None:
             return prop_string
-        for key, value in self.props:
-            prop_string + f" {key}={value}"
+        print("\n\n--------PROPS--------\n\n")
+        print(f"{self.props}")
+        for key, value in self.props.items():
+            print(f"{key}")
+            print(f"{value}")
+            prop_string += f" {key}={value}"
+        print("\n\n--------PROPS--------\n\n")
         return prop_string
 
+# TODO: Add test condition for multiple props.
