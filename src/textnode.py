@@ -1,5 +1,4 @@
 from enum import Enum
-from htmlnode import HTMLNode
 from leafnode import LeafNode
 
 
@@ -29,7 +28,6 @@ class TextNode():
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
     
-    # TODO: consider reviewing the implementation/syntax of the TextType enum below. Does it follow convention? Is there a simpler or more clear way to write the cases?
     def text_node_to_html_node(text_node):
         match text_node.text_type:
             case text_node.TEXT:
@@ -41,11 +39,11 @@ class TextNode():
             case text_node.STRIKETHROUGH:
                 return LeafNode("s", text_node.text)
             case text_node.CODE:
-                return HTMLNode("code", text_node.text)
+                return LeafNode("code", text_node.text)
             case text_node.LINK:
-                return HTMLNode("a", text_node.text, None, {"href": f"{text_node.url}"})
+                return LeafNode("a", text_node.text, None, {"href": f"{text_node.url}"})
             case text_node.IMAGE:
-                return HTMLNode("img","", None, {"src": f"{text_node.url}", "alt": f"{text_node.text}"})
+                return LeafNode("img","", None, {"src": f"{text_node.url}", "alt": f"{text_node.text}"})
             case _:
                 raise TypeError("Not a valid text type.")
             

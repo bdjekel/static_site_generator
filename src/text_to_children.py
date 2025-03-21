@@ -1,4 +1,4 @@
-from htmlnode import HTMLNode
+from leafnode import LeafNode
 from text_to_textnodes import text_to_textnodes
 from textnode import TextType
 
@@ -9,13 +9,13 @@ def text_to_children(markdown):
     
     for node in text_nodes:
         if node.text_type is TextType.IMAGE:
-            image_node = HTMLNode(
+            image_node = LeafNode(
                 tag = node.text_type.value, 
                 props = {"src" : node.url, "alt" : node.text})
             children.append(image_node)
             # print(f"IMAGE ADDED TO CHILDREN ==> {children}")
         elif node.text_type is TextType.LINK:
-            link_node = HTMLNode(
+            link_node = LeafNode(
                 tag = node.text_type.value,
                 value = node.text,
                 props = {"href" : node.url}
@@ -23,11 +23,11 @@ def text_to_children(markdown):
             children.append(link_node)
             # print(f"LINK ADDED TO CHILDREN ==> {children}")
         elif node.text_type is TextType.TEXT:
-            plaintext_node = HTMLNode(value = node.text)
+            plaintext_node = LeafNode(value = node.text)
             children.append(plaintext_node)
             # print(f"TEXT ADDED TO CHILDREN ==> {children}")
         else:
-            emphasized_node = HTMLNode(
+            emphasized_node = LeafNode(
                 tag = node.text_type.value,
                 value = node.text
             )

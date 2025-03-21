@@ -1,18 +1,18 @@
 from block_to_block_type import block_to_block_type, BlockType
-from htmlnode import HTMLNode
+from parentnode import ParentNode
 from markdown_to_blocks import markdown_to_blocks
 from text_to_children import text_to_children
 
 
 def markdown_to_html_node(markdown):
-    wrapper_div = HTMLNode("div", children=[])
+    wrapper_div = ParentNode("div", children=[])
     markdown_blocks = markdown_to_blocks(markdown)
     for block in markdown_blocks:
         block_type = block_to_block_type(block)
 # Since "`" is both a block level and inline level delimiter, must be stripped to avoid throwing error
         if block_type == BlockType.CODE:
             block = block.strip("`")
-        block_html_node = HTMLNode(block_type.value, block)
+        block_html_node = ParentNode(block_type.value, block)
         children = text_to_children(block)
         block_html_node.children = children
         wrapper_div.children.append(block_html_node)
