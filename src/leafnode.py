@@ -10,6 +10,8 @@ class LeafNode(HTMLNode):
             raise ValueError
         if self.tag == None:
             return self.value
+        elif self.tag == "img":
+            return f"<{self.tag}{self.props_to_html()}>"
         else:
             return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
         

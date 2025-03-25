@@ -6,6 +6,7 @@ from extract_markdown_links import extract_markdown_links
 
 def split_nodes_link(old_nodes: list):
     new_nodes = []
+    
     for node in old_nodes:
         if node.text_type != TextType.TEXT:
             new_nodes.extend([node])
@@ -13,16 +14,14 @@ def split_nodes_link(old_nodes: list):
             sub_nodes = []
             sub_nodes_text = re.split(r"(?<!!)(\[[^\[\]]*\]\([^\(\)]*\))", node.text)
             sub_nodes_text = [s for s in sub_nodes_text if s.strip()]
+
             for s in sub_nodes_text:
                 if re.match(r"(?<!!)(\[[^\[\]]*\]\([^\(\)]*\))", s):
                     link_data = extract_markdown_links(s)
                     sub_nodes.extend([TextNode(link_data[0][0], TextType.LINK, link_data[0][1])])
-                    print("\n\n--------LINK NODE--------\n\n")
-                    print(f"{sub_nodes}")
-                    print("\n\n--------LINK NODE--------\n\n")
-
                 else:
                     sub_nodes.extend([TextNode(s, TextType.TEXT)])
+            
             new_nodes.extend(sub_nodes)
 
     return new_nodes

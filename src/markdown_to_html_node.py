@@ -1,25 +1,44 @@
 from block_to_block_type import block_to_block_type, BlockType
-from parentnode import ParentNode
+from leafnode import LeafNode
 from markdown_to_blocks import markdown_to_blocks
+from parentnode import ParentNode
 from text_to_children import text_to_children
 
 
 def markdown_to_html_node(markdown):
     wrapper_div = ParentNode("div", children=[])
     markdown_blocks = markdown_to_blocks(markdown)
+    
     for block in markdown_blocks:
         block_type = block_to_block_type(block)
-# Since "`" is both a block level and inline level delimiter, must be stripped to avoid throwing error
-        if block_type == BlockType.CODE:
-            block = block.strip("`")
-        block_html_node = ParentNode(block_type.value, block)
-#TODO: STOPPED HERE DOING TRACEBACK FOR ERROR WITH LINK TYPE HTMLNODES. TextNode is being converted correctly to a LeafNode in text_to_children. Where does 
+        match block_type:
+            case BlockType.CODE:
+                block = block.strip("`")    # Since "`" is both a block level and inline level delimiter, must be stripped to avoid throwing error
+                code_node = ParentNode(block_type.value, block)
+                wrapper_div.children.append(code_node)
+            case BlockType.UNORDERED_LIST:
+                ul_node = ParentNode(BlockType.UNORDERED_LIST, children=[])
+                wrapper_div.children.append(ul_node)
+                # TODO: add list items as children
+            case BlockType.ORDERED_LIST:
+                ol_node = ParentNode(BlockType.ORDERED_LIST, children=[])
+                wrapper_div.children.append(ol_node)
+                # TODO: add list items as children
+
         children = text_to_children(block)
         block_html_node.children = children
-        wrapper_div.children.append(block_html_node)
     # print(f"\n-----------\n{wrapper_div}\n-----------\n")
     return wrapper_div
 
+def list_items_to_leaf_nodes(block, tag):
+    leaf_nodes = []
+    list_items = block.splitlines()
+    for item in list_items:
+        leaf_nodes.append(LeafNode(tag, item))
+    print("\n\n------------------\n\n")    
+    print(f"{leaf_nodes}")    
+    print("\n\n------------------\n\n")
+    return leaf_nodes
 
 # Split the markdown into blocks (you already have a function for this)
 # Loop over each block:
@@ -73,4 +92,24 @@ md_node_tree = markdown_to_html_node(md1)
 #TODO: the below throws an error due to "NotImplementedError." This means your program is not correctly labelling Parent and Child Nodes. Think through your solution thoroughly before fixing the bug.
 md_html = md_node_tree.to_html()
 print(md_html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
