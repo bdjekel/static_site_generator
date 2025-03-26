@@ -10,7 +10,7 @@ class BlockType(Enum):
     HEADING5 = "h5"
     HEADING6 = "h6"
     CODE = "code"
-    QUOTE = "q"
+    QUOTE = "blockquote"
     UNORDERED_LIST = "ul"
     ORDERED_LIST = "ol"
 
@@ -37,7 +37,7 @@ def block_to_block_type(markdown_block):
     elif re.search(r"^`{3}", markdown_block) and re.search(r"`{3}$", markdown_block):
         return BlockType.CODE
     
-    elif all(line.startswith(">") for line in markdown_block.splitlines()):
+    elif re.search(r"^> ", markdown_block):
         return BlockType.QUOTE
     
     elif all(line.startswith("- ") for line in markdown_block.splitlines()):
