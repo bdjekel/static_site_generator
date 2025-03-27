@@ -11,19 +11,16 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
         new_sub_nodes = []
         if delimiter not in node.text:
             new_sub_nodes.extend([node])
-            # print(f"NEW_SUB_NODES ==>\n\n{new_sub_nodes}\n\n")
         else:
             if node.text[0] == " ":
                 spacebar_transfer = True
             else:
                 spacebar_transfer = False
             words = node.text.split()
-            # print(words)
             delimiter_toggle = False
             delimited_word_list = []
             text_word_list = []
             for word in words:
-                # print(f'>>{word}<<')
         
 # Currently only evaluates delimiters at the start or end of words (the ten (10) scenarios described below). It does **NOT** catch delimiters _within_ words. (e.g., "Jim puts the _x_ in e_x_tra." Will not return extra with a bolded x.) This includes formatted words ending in punctuation (e.g., "This **bold phrase**, will throw an error.")
 
@@ -118,8 +115,6 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
                     delimiter_toggle = False
                     spacebar_transfer = True
 
-            # print(f'text_word_list: {text_word_list}')
-            # print(f'delimited_word_list: {delimited_word_list}')
 
 # if delimited word_list is not ended by the end of the list, throw an error.
             if delimiter_toggle:
@@ -130,11 +125,9 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
                 text_string = ' '.join(text_word_list)
                 new_sub_nodes.extend([TextNode(text_string, TextType.TEXT)])
         
-        # print(f'New Sub Nodes: {new_sub_nodes}')
 
         new_nodes.extend(new_sub_nodes)
 
-    # print(f'New Nodes: {new_nodes}')
     return new_nodes
 
 
