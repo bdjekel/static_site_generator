@@ -9,7 +9,7 @@ from text_to_children import text_to_children
 
 def markdown_to_html_node(markdown: str) -> ParentNode:
     wrapper_div: ParentNode = ParentNode("div", children=[])
-    markdown_blocks: list = markdown_to_blocks(markdown)
+    markdown_blocks: list[str] = markdown_to_blocks(markdown)
     
     for block in markdown_blocks:
         block_type: BlockType = block_to_block_type(block)
@@ -47,8 +47,8 @@ def list_to_nodes(block: str, tag: str) -> HTMLNode | ValueError:
     if block == "":
         raise ValueError("Empty list not allowed.")    
     list_node: ParentNode = ParentNode(tag, children=[])
-    leaf_nodes: list = []
-    list_items: list = block.splitlines()
+    leaf_nodes: list[HTMLNode] = []
+    list_items: list[str] = block.splitlines()
     for item in list_items:
         children: list[LeafNode] = text_to_children(item)
         if len(children) == 0:
