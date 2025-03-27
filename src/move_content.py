@@ -3,14 +3,8 @@ import shutil
 
 def move_content(src: str, dst: str) -> None | ValueError:
 
-# Since this is a recursive function, might need to delete or refactor error handling below.    
-    if not os.path.exists(src):
-        return ValueError("Source path does not exist")
-    elif not os.path.exists(dst):
-        return ValueError("Destination path does not exist")
-
-
-    shutil.rmtree(dst)
+    if os.path.exists(dst):
+        shutil.rmtree(dst)
     os.mkdir(dst)
 
 #TODO: if you need to maintain permissions for the dst directory, refactor using the below starting block.
@@ -35,5 +29,4 @@ def move_content(src: str, dst: str) -> None | ValueError:
             new_dir_path: str = os.path.join(dst, item)
             os.mkdir(new_dir_path)
             move_content(item_path, new_dir_path)
-
 

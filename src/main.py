@@ -1,10 +1,8 @@
-from textnode import TextNode
-from textnode import TextType
+from move_content import move_content
 
 #TODO: incomplete
 
 def main():
-    dummy = TextNode("eat my shorts", TextType.BOLD, "www.dummyvalues.org")
-    return repr(dummy)
+    move_content("static", "public")
 
 main()
