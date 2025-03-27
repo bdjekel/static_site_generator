@@ -1,7 +1,8 @@
 import unittest
-
 from leafnode import LeafNode
 
+#TODO: write more tests
+#TODO: add type hinting to entire file
 
 class TestLeafNode(unittest.TestCase):
     def test_no_value(self):

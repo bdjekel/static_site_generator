@@ -1,7 +1,8 @@
-# TODO: tests could be more rigorous. Consider writing more.
-
 import unittest
 from extract_markdown_links import extract_markdown_links
+
+#TODO: write more tests
+#TODO: add type hinting to entire file
 
 sb_meme = '../assets/tired_spongebob.webp'
 raw_md_link_string = f'Spongebob Squarepants is a show about enjoying the [little things]({sb_meme}) in life.'

@@ -1,5 +1,7 @@
 from htmlnode import HTMLNode
 
+#TODO: add type hinting to entire file
+
 class LeafNode(HTMLNode):
 
     def __init__(self, tag=None, value=None, props=None):

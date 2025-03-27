@@ -2,6 +2,8 @@ from textnode import TextNode
 from textnode import TextType
 
 # TODO: consider refactoring the conditionals below to DRY up the code a bit. There might be some repetition that can be wrapped into helper functions. If not, consider making each condition its own helper function.
+#TODO: add type hinting to entire file
+#TODO: review commenting and clean up as needed.
 
 def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
     

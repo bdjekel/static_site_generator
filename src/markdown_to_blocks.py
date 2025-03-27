@@ -1,4 +1,4 @@
-
+#TODO: add type hinting to entire file
 
 def markdown_to_blocks(markdown: str):
     cleaned_blocks = []

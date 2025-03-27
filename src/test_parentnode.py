@@ -1,8 +1,9 @@
 import unittest
-
 from leafnode import LeafNode
 from parentnode import ParentNode
 
+#TODO: write more tests
+#TODO: add type hinting to entire file
 
 class TestParentNode(unittest.TestCase):
     def test_no_children(self):

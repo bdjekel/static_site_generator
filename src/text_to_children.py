@@ -2,6 +2,8 @@ from leafnode import LeafNode
 from text_to_textnodes import text_to_textnodes
 from textnode import TextType
 
+#TODO: add type hinting to entire file
+
 def text_to_children(markdown):
     children = []
     text_nodes = text_to_textnodes(markdown)

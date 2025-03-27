@@ -1,6 +1,9 @@
 import unittest
 from markdown_to_blocks import markdown_to_blocks
 
+#TODO: write more tests
+#TODO: add type hinting to entire file
+
 class TestMarkdownToBlocks(unittest.TestCase):
     def test_v1(self):
         pass

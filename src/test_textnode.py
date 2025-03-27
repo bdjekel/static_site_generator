@@ -1,9 +1,10 @@
 import unittest
-
 from textnode import TextNode
 from textnode import TextType
 from htmlnode import HTMLNode
 from leafnode import LeafNode
+
+#TODO: add type hinting to entire file
 
 class TestTextNode(unittest.TestCase):
 

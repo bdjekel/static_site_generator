@@ -3,6 +3,7 @@ from textnode import TextNode
 from textnode import TextType
 from extract_markdown_links import extract_markdown_links
 
+#TODO: add type hinting to entire file
 
 def split_nodes_link(old_nodes: list):
     new_nodes = []

@@ -1,10 +1,10 @@
-# TODO: tests could be more rigorous. Consider writing more.
-
-
 import unittest
 from textnode import TextNode
 from textnode import TextType
 from split_nodes_image import split_nodes_image
+
+# TODO Consider moving testing data to separate file. Consider also whether pulling in testing data from other unit tests to a central testing data file is a logical improvement.
+#TODO: add type hinting to entire file
 
 node_1 = TextNode('![to youtube](https://www.youtube.com/@bootdotdev)', TextType.TEXT)
 node_2 = TextNode('![to boot dev](https://www.boot.dev) and', TextType.TEXT)

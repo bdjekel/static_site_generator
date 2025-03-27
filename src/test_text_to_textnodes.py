@@ -2,6 +2,8 @@ import unittest
 from textnode import TextNode, TextType
 from text_to_textnodes import text_to_textnodes
 
+# TODO Consider moving testing data to separate file. Consider also whether pulling in testing data from other unit tests to a central testing data file is a logical improvement.
+#TODO: add type hinting to entire file
 
 class TestTextToTextNode(unittest.TestCase):
     def test_all_split_types(self):

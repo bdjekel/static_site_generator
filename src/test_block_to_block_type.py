@@ -1,6 +1,8 @@
 import unittest
 from block_to_block_type import BlockType, block_to_block_type
 
+#TODO: add type hinting to entire file
+
 class TestMarkdownToBlocks(unittest.TestCase):
     def test_heading1(self):
         heading = "# This is a heading"
@@ -50,7 +52,8 @@ class TestMarkdownToBlocks(unittest.TestCase):
         paragraph = "29 Kids go into the water, 22 Kids come out of the water. The Ice Cream Man, He gets the rest. April the 9th, Half past four P.M."
         self.assertEqual(block_to_block_type(paragraph), BlockType.PARAGRAPH)
 
-# TODO: write failing examples for each case above.
+#TODO: write failing examples for each case above.
+#TODO: write edge cases like empty string and incorrectly typed
     def test_empty_string(self):
         pass
 

@@ -1,6 +1,8 @@
 from enum import Enum
 import re
 
+#TODO: add type hinting to entire file
+
 class BlockType(Enum):
     PARAGRAPH = "p"
     HEADING1 = "h1"

@@ -3,6 +3,8 @@ from textnode import TextNode
 from textnode import TextType
 from extract_markdown_images import extract_markdown_images
 
+#TODO: add type hinting to entire file
+#TODO: commented out test below func needs to be moved to test_split_nodes_image.py
 
 def split_nodes_image(old_nodes: list):
     new_nodes = []

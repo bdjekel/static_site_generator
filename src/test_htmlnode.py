@@ -2,6 +2,8 @@ import unittest
 
 from htmlnode import HTMLNode
 
+#TODO: write more tests
+#TODO: add type hinting to entire file
 
 class TestHTMLNode(unittest.TestCase):
     def test_norm_no_children(self):
@@ -18,6 +20,8 @@ class TestHTMLNode(unittest.TestCase):
         node = HTMLNode("h1", "Testing, testing, 1, 2, 3", ["<p></p>","<a><a/>"])
         self.assertIsNone(node.props)
     
+# TODO: Add test condition for multiple props.
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -4,6 +4,8 @@ from markdown_to_blocks import markdown_to_blocks
 from parentnode import ParentNode
 from text_to_children import text_to_children
 
+#TODO: add type hinting to entire file
+#TODO: Add feature to allow for markdown within blockquotes
 
 def markdown_to_html_node(markdown):
     wrapper_div = ParentNode("div", children=[])
@@ -21,7 +23,6 @@ def markdown_to_html_node(markdown):
                 block = block.strip("`")    # Since "`" is both a block level and inline level delimiter, must be stripped to avoid throwing error
                 code_node = LeafNode(block_type.value, block)
                 wrapper_div.children.append(code_node)
-#TODO: Add feature to allow for markdown within blockquotes
             case BlockType.QUOTE:
                 block = block.strip("> ")
                 quote_node = LeafNode(block_type.value, block)

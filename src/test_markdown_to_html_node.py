@@ -1,7 +1,9 @@
 import unittest
-
 from markdown_to_html_node import markdown_to_html_node
 
+
+#TODO: write more tests
+#TODO: add type hinting to entire file
 
 #TODO: confirm this actually contains all cases. Add as you find edges.
 markdown_all_cases = """

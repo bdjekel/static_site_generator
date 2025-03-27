@@ -5,6 +5,7 @@ from textnode import TextNode
 from textnode import TextType
 
 # TODO Consider moving testing data to separate file. Consider also whether pulling in testing data from other unit tests to a central testing data file is a logical improvement.
+#TODO: add type hinting to entire file
 
 # See markdown Scenario Table as comment at end of this test file
 

@@ -1,9 +1,10 @@
 from enum import Enum
 from leafnode import LeafNode
 
+#TODO: add type hinting to entire file
 
 class TextType(Enum):
-    TEXT = "" #TODO: Figure out what the value needs to be to correctly combine inline with the other HTMLNodes
+    TEXT = ""
     BOLD = "b"
     ITALIC = "i"
     STRIKETHROUGH = "s"
