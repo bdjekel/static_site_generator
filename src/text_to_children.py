@@ -1,23 +1,23 @@
 from leafnode import LeafNode
 from text_to_textnodes import text_to_textnodes
-from textnode import TextType
+from textnode import TextType, TextNode
 
 #TODO: add type hinting to entire file
 
-def text_to_children(markdown):
-    children = []
-    text_nodes = text_to_textnodes(markdown)
+def text_to_children(markdown: str) -> list[LeafNode]:
+    children: list[LeafNode] = []
+    text_nodes: list[TextNode] = text_to_textnodes(markdown)
     
     for node in text_nodes:
         match node.text_type:
             case TextType.IMAGE:
-                image_node = LeafNode(
+                image_node: LeafNode = LeafNode(
                     tag = node.text_type.value,
                     value = "",
                     props = {"src" : node.url, "alt" : node.text})
                 children.append(image_node)
             case TextType.LINK:
-                link_node = LeafNode(
+                link_node: LeafNode = LeafNode(
                     tag = node.text_type.value,
                     value = node.text,
                     props = {"href" : node.url}
@@ -25,10 +25,10 @@ def text_to_children(markdown):
 
                 children.append(link_node)
             case TextType.TEXT:
-                plaintext_node = LeafNode(value = node.text)
+                plaintext_node: LeafNode = LeafNode(value = node.text)
                 children.append(plaintext_node)
             case _:
-                emphasized_node = LeafNode(
+                emphasized_node: LeafNode = LeafNode(
                     tag = node.text_type.value,
                     value = node.text
                 )
