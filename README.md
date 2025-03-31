@@ -1,4 +1,3 @@
 # static_site_generator
-boot.dev guided project #3
 
-
+This portfolio project generates a static website from raw markdown files.

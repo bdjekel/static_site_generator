@@ -98,6 +98,7 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
                     delimiter_toggle = True
                     spacebar_transfer = True
 
+#BUG: italics in line 21 of index.md includes an extra space at the end of the italic phrase. Would expect bug to be here?
     # Scenario (8): end delimiter, toggle on
                 elif word.endswith(delimiter) and delimiter_toggle:
                     if spacebar_transfer:
