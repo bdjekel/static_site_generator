@@ -6,11 +6,13 @@ from textnode import TextType
 #TODO: review commenting and clean up as needed.
 
 def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
-    
-    new_nodes = []
+    spacebar_transfer: bool = False
+    delimiter_toggle: bool = False
+
+    new_nodes: list[TextNode] = []
 
     for node in old_nodes:
-        new_sub_nodes = []
+        new_sub_nodes: list[TextNode] = []
         if delimiter not in node.text:
             new_sub_nodes.extend([node])
         else:
@@ -18,13 +20,14 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
                 spacebar_transfer = True
             else:
                 spacebar_transfer = False
-            words = node.text.split()
+            words: list[str] = node.text.split()
             delimiter_toggle = False
             delimited_word_list = []
             text_word_list = []
             for word in words:
         
-# Currently only evaluates delimiters at the start or end of words (the ten (10) scenarios described below). It does **NOT** catch delimiters _within_ words. (e.g., "Jim puts the _x_ in e_x_tra." Will not return extra with a bolded x.) This includes formatted words ending in punctuation (e.g., "This **bold phrase**, will throw an error.")
+# Currently only evaluates delimiters at the start or end of words (the ten (10) scenarios described below). It does **NOT** catch delimiters _within_ words. (e.g., "Jim puts the _x_ in e_x_tra." Will not return extra with a bolded x.) 
+    # TODO: !!! This includes formatted words ending in punctuation (e.g., "This **bold phrase**, will throw an error.") !!! (THIS IS ONE OF THE MOST INCONVENIENT BUGS IN THE CODE IMO)
 
 # Scenario (9): isolated delimiter, toggle off
                 if word == delimiter and not delimiter_toggle:
@@ -120,7 +123,8 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
 
 # if delimited word_list is not ended by the end of the list, throw an error.
             if delimiter_toggle:
-                raise Exception('Invalid Markdown syntax')
+                print(f"BONK. WRONG. => {node}")
+                raise Exception("Invalid Markdown syntax")
         
 # if words does not end with a delimiter, add text node for everything since the last delimiter 
             if len(text_word_list) > 0:

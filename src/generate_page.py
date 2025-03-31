@@ -14,20 +14,22 @@ def generate_page(from_path: str, template_path: str, dest_path: str) -> None:
 
     node_tree: HTMLNode = markdown_to_html_node(markdown_content)
 
-    html_tree: str = node_tree.html()
+    html_tree: str = node_tree.to_html()
 
     title: str = extract_title(markdown_content)
 
+# TODO: Can I chain together .replaces and make this one line?
     template_with_title: str = template_content.replace("{{ Title }}", title)
-
     template_completed: str = template_with_title.replace("{{ Content }}", html_tree)
 
+    print(f"DEST PATH => {dest_path}")
     dest_dir: str = os.path.dirname(dest_path)
+    print(f"DEST DIR => {dest_dir}")
 
     if dest_dir:
         os.makedirs(dest_dir, exist_ok=True)
 
-    with open(dest_path) as f:
+    with open(dest_path, "w") as f:
         f.write(template_completed)
 
     
