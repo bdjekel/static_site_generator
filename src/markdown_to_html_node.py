@@ -46,12 +46,10 @@ def markdown_to_html_node(markdown: str) -> ParentNode:
                 quote_node: LeafNode = LeafNode(block_type.value, block)
                 wrapper_div.children.append(quote_node)
 
-#BUG: fix formatting. Needs to remove "-" chars. Fix using helper function defined below.
             case BlockType.UNORDERED_LIST:
                 ul_node: HTMLNode = list_to_nodes(block, block_type.value)
                 wrapper_div.children.append(ul_node)
 
-#BUG: fix formatting. Needs to remove numbering. Fix using helper function defined below.
             case BlockType.ORDERED_LIST:
                 ol_node: HTMLNode = list_to_nodes(block, block_type.value)
                 wrapper_div.children.append(ol_node)
