@@ -13,10 +13,10 @@ def markdown_to_html_node(markdown: str) -> ParentNode:
     
     wrapper_div: ParentNode = ParentNode("div", children=[])
     markdown_blocks: list[str] = markdown_to_blocks(markdown)
-    print("----------------------------------")
-    for i, block in enumerate(markdown_blocks):
-        print(f"\nvvBlock #{i}vv\n{block}\n")
-    print("----------------------------------")
+    # print("----------------------------------")
+    # for i, block in enumerate(markdown_blocks):
+    #     print(f"\nvvBlock #{i}vv\n{block}\n")
+    # print("----------------------------------")
     
     for block in markdown_blocks:
 
@@ -25,7 +25,7 @@ def markdown_to_html_node(markdown: str) -> ParentNode:
 
         match block_type:
 
-#TODO: Add feature to allow for markdown within headings?
+#BUG: Add feature to allow for markdown within headings
             case BlockType.HEADING1 | BlockType.HEADING2 | BlockType.HEADING3 | BlockType.HEADING4 | BlockType.HEADING5 | BlockType.HEADING6:
                 block: str = block.strip("#")
                 block: str = block.strip()

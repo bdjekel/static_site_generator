@@ -14,9 +14,6 @@ def move_content(src: str, dst: str) -> None | ValueError:
 
     for item in src_tree:
         
-        print()
-        print(item)
-
         item_path: str = os.path.join(src, item)
         if os.path.isfile(item_path):
             shutil.copy(item_path, dst)

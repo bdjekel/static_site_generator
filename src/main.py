@@ -1,4 +1,4 @@
-from generate_page import generate_page
+from generate_pages_recursive import generate_pages_recursive
 from move_content import move_content
 import os
 import shutil
@@ -12,6 +12,6 @@ def main() -> None:
     os.mkdir("public")
     
     move_content("static", "public")
-    generate_page("content/index.md", "template.html", "public/index.html")
+    generate_pages_recursive("content", "template.html", "public")
 
 main()

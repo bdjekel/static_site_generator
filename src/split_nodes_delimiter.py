@@ -1,8 +1,7 @@
 from textnode import TextNode
 from textnode import TextType
 
-# TODO: consider refactoring the conditionals below to DRY up the code a bit. There might be some repetition that can be wrapped into helper functions. If not, consider making each condition its own helper function.
-#TODO: add type hinting to entire file
+#BUG: When creating the helper function, the spacebar_transfer pattern for tracking spaces stopped working.
 #TODO: review commenting and clean up as needed.
 
 def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
@@ -28,9 +27,9 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
             words: list[str] = node.text.split()
             delimited_word_list: list[str] = []
             text_word_list: list[str] = []
-                    
+
 # Currently only evaluates delimiters at the start or end of words (the ten (10) scenarios described below). It does **NOT** catch delimiters _within_ words. (e.g., "Jim puts the _x_ in e_x_tra." Will not return extra with a bolded x.) 
-    # TODO: !!! This includes formatted words ending in punctuation (e.g., "This **bold phrase**, will throw an error.") !!! (THIS IS ONE OF THE MOST INCONVENIENT BUGS IN THE CODE IMO)
+    # BUG: !!! This includes formatted words ending in punctuation (e.g., "This **bold phrase**, will throw an error.") !!! (THIS IS ONE THE MOST PROMINENT BUG IN THE CODE)
 
             for word in words:
 
@@ -98,7 +97,6 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
                     delimiter_toggle = True
                     spacebar_transfer = True
 
-#BUG: italics in line 21 of index.md includes an extra space at the end of the italic phrase. Would expect bug to be here?
     # Scenario (8): end delimiter, toggle on
                 elif word.endswith(delimiter) and delimiter_toggle:
                     if spacebar_transfer:
@@ -130,6 +128,6 @@ def split_nodes_delimiter(old_nodes: list, delimiter: str, text_type: TextType):
             
 
 def word_list_handler(word_list, sub_nodes, text_type):
-    text_string: str = ' '.join(word_list) + ' '
-    sub_nodes.extend([TextNode(text_string, text_type)])
+    completed_string: str = ' '.join(word_list)
+    sub_nodes.extend([TextNode(completed_string, text_type)])
     word_list.clear()

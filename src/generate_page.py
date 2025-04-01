@@ -22,9 +22,7 @@ def generate_page(from_path: str, template_path: str, dest_path: str) -> None:
     template_with_title: str = template_content.replace("{{ Title }}", title)
     template_completed: str = template_with_title.replace("{{ Content }}", html_tree)
 
-    print(f"DEST PATH => {dest_path}")
     dest_dir: str = os.path.dirname(dest_path)
-    print(f"DEST DIR => {dest_dir}")
 
     if dest_dir:
         os.makedirs(dest_dir, exist_ok=True)
