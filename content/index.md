@@ -4,9 +4,15 @@
 
 Welcome! My name is Brian Jekel. I am a "self-taught" developer currently residing in Little Rock, AR. With the help of many affordable--sometimes free--resources including [The Self-Taught Programmer](https://www.theselftaughtprogrammer.io/), [Wes Bos](https://wesbos.com/), [David Malan's CS50](https://pll.harvard.edu/course/cs50-introduction-computer-science), and most essentially [Lane Wagner and the boot.dev team][https://www.boot.dev], I have developed a robust full-stack skill set. So far, I have used that skill set for (personal)[https://github.com/bdjekel] and (freelance)[https://www.blackdiamondpropertygrp.com/] projects. If you would like more detail, you can either (contact me directly)[mailto:bdjekel@gmail.com?subject=Portfolio%20Site%20Interest] or view my resume / CV (here)[/resume.pdf].
 
+## Completed Courses
+
+![Learn Git](/images/Learn_Go.jpg)
+
+
 ## Blog Posts
 
 - [Empty First Entry](/blog/first_entry/first_entry.md)
+- [Empty Second Entry](/blog/first_entry/second_entry.md)
 
 ## My Favorite Media
 
