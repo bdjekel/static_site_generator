@@ -26,7 +26,7 @@ def generate_page(from_path: str, template_path: str, dest_path: str, basepath: 
 
     dest_dir: str = os.path.dirname(dest_path)
 
-    if dest_dir:
+    if dest_dir != "":
         os.makedirs(dest_dir, exist_ok=True)
 
     with open(dest_path, "w") as f:

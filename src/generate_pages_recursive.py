@@ -9,8 +9,8 @@ from pathlib import Path
 def generate_pages_recursive(dir_path_content: str, template_path: str, dest_dir_path: str, basepath: str) -> None:
 
     for filename in os.listdir(dir_path_content):
-        from_path = os.path.join(dir_path_content, filename)
-        dest_path = os.path.join(dest_dir_path, filename)        
+        from_path: str = os.path.join(dir_path_content, filename)
+        dest_path: str = os.path.join(dest_dir_path, filename)        
         
         if os.path.isfile(from_path):
             dest_path = Path(dest_path).with_suffix(".html")

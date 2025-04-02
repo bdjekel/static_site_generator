@@ -6,20 +6,24 @@ import sys
 
 #TODO: turn your paths into variables at the top of the file.
 
+static_dir_path = "./static"
+public_dir_path = "./docs"
+content_dir_path = "./content"
+template_path = "./template.html"
+basepath: str = "/"
+
 def main() -> None:
     
-    basepath: str = "/"
     if len(sys.argv) > 1:
         basepath: str = sys.argv[1]
     print(basepath)
 
-    if os.path.exists("./docs"):
-        shutil.rmtree("./docs")
-    os.mkdir("./docs")
+    if os.path.exists(public_dir_path):
+        shutil.rmtree(public_dir_path)
+    # os.mkdir("./docs")
     
-    move_content("./static", "./docs")
+    move_content(static_dir_path, public_dir_path)
 
-    
-    generate_pages_recursive("./content", "./template.html", "./docs", basepath)
+    generate_pages_recursive(content_dir_path, template_path, public_dir_path, basepath)
 
 main()
