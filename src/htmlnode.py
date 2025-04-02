@@ -24,5 +24,5 @@ class HTMLNode():
         if self.props is None:
             return prop_string
         for key, value in self.props.items():
-            prop_string += f" {key}={value}"
+            prop_string += f' {key}="{value}"'
         return prop_string

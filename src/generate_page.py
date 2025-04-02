@@ -18,12 +18,10 @@ def generate_page(from_path: str, template_path: str, dest_path: str, basepath: 
 
     title: str = extract_title(markdown_content)
 
-# TODO: Can I chain together .replaces and make this one line?
     template_content: str = template_content.replace("{{ Title }}", title)
     template_content = template_content.replace("{{ Content }}", html_tree)
     template_content = template_content.replace('href="/', 'href="' + basepath)
     template_content = template_content.replace('src="/', 'src="' + basepath)
-
     dest_dir: str = os.path.dirname(dest_path)
 
     if dest_dir != "":
