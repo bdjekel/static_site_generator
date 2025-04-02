@@ -3,7 +3,7 @@ from htmlnode import HTMLNode
 from markdown_to_html_node import markdown_to_html_node
 import os
 
-def generate_page(from_path: str, template_path: str, dest_path: str) -> None:
+def generate_page(from_path: str, template_path: str, dest_path: str, basepath: str) -> None:
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
 
     with open(from_path, "r") as f:
@@ -19,8 +19,10 @@ def generate_page(from_path: str, template_path: str, dest_path: str) -> None:
     title: str = extract_title(markdown_content)
 
 # TODO: Can I chain together .replaces and make this one line?
-    template_with_title: str = template_content.replace("{{ Title }}", title)
-    template_completed: str = template_with_title.replace("{{ Content }}", html_tree)
+    template_content: str = template_content.replace("{{ Title }}", title)
+    template_content = template_content.replace("{{ Content }}", html_tree)
+    template_content = template_content.replace('href="/', 'href="' + basepath)
+    template_content = template_content.replace('src="/', 'src="' + basepath)
 
     dest_dir: str = os.path.dirname(dest_path)
 
@@ -28,6 +30,6 @@ def generate_page(from_path: str, template_path: str, dest_path: str) -> None:
         os.makedirs(dest_dir, exist_ok=True)
 
     with open(dest_path, "w") as f:
-        f.write(template_completed)
+        f.write(template_content)
 
     
