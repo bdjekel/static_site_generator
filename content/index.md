@@ -6,7 +6,7 @@ Welcome! My name is Brian Jekel. I am a "self-taught" developer currently residi
 
 ## Blog Posts
 
-- [Why Glorfindel is More Impressive than Legolas](/blog/glorfindel)
+- [Empty First Entry](/blog/first_entry/first_entry.md)
 
 ## My Favorite Media
 
