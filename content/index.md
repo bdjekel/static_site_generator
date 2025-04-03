@@ -27,12 +27,6 @@ Welcome! My name is Brian Jekel. I am a self-taught developer currently residing
 - What The Flexbox?!*
 - JavaScript 30*
 
-## Blog Posts
-
-- [Empty First Entry](/blog/first_entry/first_entry.md)
-- [Empty Second Entry](/blog/first_entry/second_entry.md)
-
-
 Want to get in touch? Shoot me an email! [bdjekel@gmail.com](mailto:bdjekel@gmail.com).
 
 This site was generated with a [static site generator](https://github.com/bdjekel/static_site_generator) that I custom-built with ample help from [this course](https://www.boot.dev/courses/build-static-site-generator-python) on boot.dev.
