@@ -35,5 +35,5 @@ Welcome! My name is Brian Jekel. I am a self-taught developer currently residing
 
 Want to get in touch? Shoot me an email! [bdjekel@gmail.com](mailto:bdjekel@gmail.com).
 
-This site was generated with a [static site generator](https://github.com/bdjekel/static_site_generator) that I custom-built with ample help from the following course on [Boot.dev](https://www.boot.dev/courses/build-static-site-generator-python).
+This site was generated with a [static site generator](https://github.com/bdjekel/static_site_generator) that I custom-built with ample help from [this course](https://www.boot.dev/courses/build-static-site-generator-python) on boot.dev.
 
