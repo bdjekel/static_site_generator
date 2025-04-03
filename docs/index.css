@@ -105,6 +105,10 @@ img {
   grid-template-columns: 1fr auto;
 }
 
+.hero-image {
+  max-width: 50%;
+}
+
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
