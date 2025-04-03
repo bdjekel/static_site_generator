@@ -105,7 +105,7 @@ img {
   grid-template-columns: 1fr auto;
 }
 
-img > .hero-image {
+#hero-image {
   max-width: 50%;
 }
 
