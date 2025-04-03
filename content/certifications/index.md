@@ -1,4 +1,4 @@
-## Certifications
+# Certifications
 
 ### Boot.Dev Course Certificates
 

@@ -6,13 +6,13 @@ from split_nodes_link import split_nodes_link
 #TODO: add type hinting to entire file
 
 def text_to_textnodes(text):
-    original_node = [TextNode(text, TextType.TEXT)]
+    text_nodes = [TextNode(text, TextType.TEXT)]
 
-    bold_nodes_split = split_nodes_delimiter(original_node, "**", TextType.BOLD)
-    italic_nodes_split = split_nodes_delimiter(bold_nodes_split, "_", TextType.ITALIC)
-    strikethrough_nodes_split = split_nodes_delimiter(italic_nodes_split, "~~", TextType.STRIKETHROUGH)
-    code_nodes_split = split_nodes_delimiter(strikethrough_nodes_split, "`", TextType.CODE)
-    image_nodes_split = split_nodes_image(code_nodes_split)
-    link_nodes_split = split_nodes_link(image_nodes_split)
+    text_nodes = split_nodes_image(text_nodes)
+    text_nodes = split_nodes_link(text_nodes)
+    text_nodes = split_nodes_delimiter(text_nodes, "**", TextType.BOLD)
+    text_nodes = split_nodes_delimiter(text_nodes, "_", TextType.ITALIC)
+    text_nodes = split_nodes_delimiter(text_nodes, "~~", TextType.STRIKETHROUGH)
+    text_nodes = split_nodes_delimiter(text_nodes, "`", TextType.CODE)
 
-    return link_nodes_split
+    return text_nodes

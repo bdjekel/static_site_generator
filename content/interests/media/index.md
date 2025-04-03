@@ -1,4 +1,4 @@
-## My Favorite Media
+# My Favorite Media
 
 #### Movies
 

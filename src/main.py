@@ -18,7 +18,6 @@ def main() -> None:
 
     if len(sys.argv) > 1:
         basepath: str = sys.argv[1]
-    print(basepath)
 
     if os.path.exists(public_dir_path):
         shutil.rmtree(public_dir_path)

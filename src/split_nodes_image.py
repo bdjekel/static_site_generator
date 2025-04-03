@@ -8,13 +8,13 @@ from extract_markdown_images import extract_markdown_images
 
 def split_nodes_image(old_nodes: list):
     new_nodes = []
+    
     for node in old_nodes:
         if node.text_type != TextType.TEXT:
             new_nodes.extend([node])
         else:
             sub_nodes = []
             sub_nodes_text = re.split(r"(!\[[^\[\]]*\]\([^\(\)]*\))", node.text)
-            
             sub_nodes_text = [s for s in sub_nodes_text if len(s) > 0 and s != " "]
             for s in sub_nodes_text:
                 if "![" in s:
