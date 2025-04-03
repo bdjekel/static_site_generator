@@ -102,11 +102,11 @@ img {
 
 .hero {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
 }
 
 #hero-image {
-  max-width: 50%;
+  max-width: 400px;
 }
 
 ::-webkit-scrollbar {
