@@ -1,7 +1,26 @@
+:root {
+    color-scheme: light dark;
+    --primary-text-color-light: rgb(225, 204, 190);
+    --primary-text-color-dark: rgb(28, 28, 28);
+    --primary-background-color-light: rgb(28, 28, 28);
+    --primary-background-color-dark: rgb(225, 204, 190);
+    
+    /* --secondary-background-color-light: rgb(225, 204, 190);
+    --secondary-background-color-dark: rgb(28, 28, 28);
+    --tertiary-background-color-light: rgb(28, 28, 28);
+    --tertiary-background-color-dark: rgb(225, 204, 190);
+    --quaternary-background-color-light: rgb(225, 204, 190); */
+
+    --base-font-size: 16px;
+    --heading-font-font-family: "Open Sans", sans-serif;
+    --heading-font-font-style: normal;
+    --heading-font-font-weight: 700;
+}
+
 body {
-    background-color: #1f1c25;
+    background-color: light-dark(rgb(225, 204, 190), rgb(28, 28, 28));
     color: #f0e6d1;
-    font-family: "Luminari", "Georgia", serif;
+    font-family: var(--heading-font-font-family);
     line-height: 1.7;
     margin: 0;
     padding: 20px;
@@ -20,14 +39,13 @@ h3,
 h4,
 h5,
 h6 {
-    color: #dda15e;
+    color: light-dark(rgb(28, 28, 28), rgb(225, 204, 190));
     margin-top: 24px;
     margin-bottom: 16px;
-    text-shadow: 2px 2px 4px #000;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 5em;
 }
 
 h2 {
@@ -100,6 +118,37 @@ img {
     box-shadow: 3px 3px 6px #000;
 }
 
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    gap: -2em;
+    margin-bottom: 2em;
+}
+
+.profile-name, .profile-headshot {
+}
+
+.profile-name {
+    align-self: center;
+    color: var(--primary-text-color-light);
+    font-family: var(--heading-font-font-family);
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    z-index: 2;
+}
+
+img.profile-headshot {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: block;
+    grid-column: 3 / -1;
+    grid-row: 1 / 5;
+    height: auto;
+    z-index: 1;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -128,3 +177,20 @@ img {
 ::-webkit-scrollbar-corner {
     background: #1f1c25;
 }
+
+@media (max-width: 850px) {
+    .profile-grid {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    .profile-name {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    img.profile-headshot {
+        grid-column: auto;
+        grid-row: auto;
+        max-width: 80vw;
+    }
+  }

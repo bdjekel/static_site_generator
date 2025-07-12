@@ -4,7 +4,6 @@ import os
 import shutil
 import sys
 
-#TODO: turn your paths into variables at the top of the file.
 
 static_dir_path: str = "./static"
 public_dir_path: str = "./docs"
