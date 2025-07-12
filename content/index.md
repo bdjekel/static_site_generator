@@ -1,8 +1,14 @@
 # Brian Jekel
 
+<<<<<<< HEAD
 ![Brian Jekel Headshot](/images/bdj_headshot.JPG)
 
 Welcome! My name is Brian Jekel. I am a self-taught developer currently residing in Little Rock, AR. With the help of many affordable--sometimes free--resources including [The Self-Taught Programmer](https://www.theselftaughtprogrammer.io/), [Wes Bos](https://wesbos.com/), [David Malan's CS50](https://pll.harvard.edu/course/cs50-introduction-computer-science), and most essentially [Lane Wagner and the boot.dev team](https://www.boot.dev), I have developed a robust full-stack skill set. So far, I have used that skill set for [personal](https://github.com/bdjekel) and [freelance](https://www.blackdiamondpropertygrp.com/) projects. If you would like more detail, you can either [contact me directly](mailto:bdjekel@gmail.com?subject=Portfolio%20Site%20Interest) or view my resume / CV [here](/static/resume.pdf).
+=======
+<!-- ![Brian Jekel Headshot](/images/bdj_0.75_body_shot.jpg) -->
+
+Welcome! My name is Brian Jekel. I am a self-taught developer currently residing in Little Rock, AR. With the help of many affordable--sometimes free--resources including [The Self-Taught Programmer](https://www.theselftaughtprogrammer.io/), [Wes Bos](https://wesbos.com/), [David Malan's CS50](https://pll.harvard.edu/course/cs50-introduction-computer-science), and most essentially [Lane Wagner and the boot.dev team](https://www.boot.dev), I have developed a robust full-stack skill set. So far, I have used that skill set for (personal)[https://github.com/bdjekel] and [freelance](https://www.blackdiamondpropertygrp.com/) projects. If you would like more detail, you can either [contact me directly](mailto:bdjekel@gmail.com?subject=Portfolio%20Site%20Interest) or view my resume / CV [here](/static/resume.pdf).
+>>>>>>> portfolio_site
 
 ## Completed Courses
 
@@ -29,5 +35,11 @@ Welcome! My name is Brian Jekel. I am a self-taught developer currently residing
 
 Want to get in touch? Shoot me an email! [bdjekel@gmail.com](mailto:bdjekel@gmail.com).
 
+<<<<<<< HEAD
 This site was generated with a [static site generator](https://github.com/bdjekel/static_site_generator) that I custom-built with ample help from [this course](https://www.boot.dev/courses/build-static-site-generator-python) on boot.dev.
 
+=======
+This site was generated with a [static site generator](https://github.com/bdjekel/static_site_generator) that I custom-built with guidance from the following course on [Boot.dev](https://www.boot.dev/courses/build-static-site-generator-python).
+
+Deployed March 2025
+>>>>>>> portfolio_site

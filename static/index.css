@@ -1,7 +1,26 @@
+:root {
+    color-scheme: light dark;
+    --primary-text-color-light: rgb(225, 204, 190);
+    --primary-text-color-dark: rgb(28, 28, 28);
+    --primary-background-color-light: rgb(28, 28, 28);
+    --primary-background-color-dark: rgb(225, 204, 190);
+    
+    /* --secondary-background-color-light: rgb(225, 204, 190);
+    --secondary-background-color-dark: rgb(28, 28, 28);
+    --tertiary-background-color-light: rgb(28, 28, 28);
+    --tertiary-background-color-dark: rgb(225, 204, 190);
+    --quaternary-background-color-light: rgb(225, 204, 190); */
+
+    --base-font-size: 16px;
+    --heading-font-font-family: "pragmatica-extended", sans-serif;
+    --heading-font-font-style: normal;
+    --heading-font-font-weight: 700;
+}
+
 body {
-    background-color: #1f1c25;
+    background-color: light-dark(rgb(225, 204, 190), rgb(28, 28, 28));
     color: #f0e6d1;
-    font-family: "Luminari", "Georgia", serif;
+    font-family: var(--heading-font-font-family);
     line-height: 1.7;
     margin: 0;
     padding: 20px;
@@ -20,14 +39,13 @@ h3,
 h4,
 h5,
 h6 {
-    color: #dda15e;
+    color: light-dark(rgb(28, 28, 28), rgb(225, 204, 190));
     margin-top: 24px;
     margin-bottom: 16px;
-    text-shadow: 2px 2px 4px #000;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 4em;
 }
 
 h2 {
@@ -98,6 +116,45 @@ img {
     border-radius: 6px;
     border: 3px solid #3c3c42;
     box-shadow: 3px 3px 6px #000;
+}
+
+/* Profile grid for name and headshot side by side */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: -2em;
+    margin-bottom: 2em;
+}
+
+.profile-name {
+    font-size: 3em;
+    font-family: var(--heading-font-font-family);
+    color: var(--primary-text-color-light);
+}
+
+img.profile-headshot {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 6px;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 850px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .profile-name {
+    font-size: 2.5em; /* Optional: scale down for small screens */
+    margin-bottom: 0;
+  }
+  img.profile-headshot {
+    max-width: 80vw;
+  }
 }
 
 ::-webkit-scrollbar {
