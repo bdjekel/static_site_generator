@@ -12,7 +12,7 @@
     --quaternary-background-color-light: rgb(225, 204, 190); */
 
     --base-font-size: 16px;
-    --heading-font-font-family: "Open Sans", sans-serif;
+    --heading-font-font-family: "pragmatica-extended", sans-serif;
     --heading-font-font-style: normal;
     --heading-font-font-weight: 700;
 }
@@ -45,7 +45,7 @@ h6 {
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 4em;
 }
 
 h2 {
@@ -118,35 +118,43 @@ img {
     box-shadow: 3px 3px 6px #000;
 }
 
+/* Profile grid for name and headshot side by side */
 .profile-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: -2em;
     margin-bottom: 2em;
 }
 
-.profile-name, .profile-headshot {
-}
-
 .profile-name {
-    align-self: center;
-    color: var(--primary-text-color-light);
+    font-size: 3em;
     font-family: var(--heading-font-font-family);
-    grid-column: 1 / 4;
-    grid-row: 3 / 4;
-    z-index: 2;
+    color: var(--primary-text-color-light);
 }
 
 img.profile-headshot {
-    background: transparent;
     border: none;
     box-shadow: none;
-    display: block;
-    grid-column: 3 / -1;
-    grid-row: 1 / 5;
+    background: transparent;
+    border-radius: 6px;
     height: auto;
-    z-index: 1;
+    display: block;
+}
+
+@media (max-width: 850px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .profile-name {
+    font-size: 2.5em; /* Optional: scale down for small screens */
+    margin-bottom: 0;
+  }
+  img.profile-headshot {
+    max-width: 80vw;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -177,20 +185,3 @@ img.profile-headshot {
 ::-webkit-scrollbar-corner {
     background: #1f1c25;
 }
-
-@media (max-width: 850px) {
-    .profile-grid {
-      grid-template-columns: 1fr;
-      justify-items: center;
-      text-align: center;
-    }
-    .profile-name {
-        grid-column: auto;
-        grid-row: auto;
-    }
-    img.profile-headshot {
-        grid-column: auto;
-        grid-row: auto;
-        max-width: 80vw;
-    }
-  }
